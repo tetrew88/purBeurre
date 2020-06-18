@@ -10,7 +10,12 @@ def index(request):
     template = loader.get_template('pages/index.html')
     return HttpResponse(template.render(request=request))
 
+def account(request):
+	template = loader.get_template('pages/account.html')
+	return HttpResponse(template.render(request=request))
+
 def connexion(request):
+	print("yes")
 	user = authenticate(username='john', password='secret')
 
 	#if user is not None:

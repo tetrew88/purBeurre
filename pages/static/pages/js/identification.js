@@ -1,33 +1,34 @@
-function collect_identifiant()
+function collect_identifiant(event)
 {
-	let identifiant = {'mailAdress':'', 'password':''};
+	let identifiantform = document.getElementById("identifiantInput");
+	
+	let mailInput = document.getElementById("mailAdress");
+	let passwordInput = document.getElementById("password");
 
-	const mailInput = document.getElementById("mailAdress");
-	const passwordInput = document.getElementById("password");
-
-	if(mailInput == null)
-	{
-		console.log(11);
-	}
-	if(passwordInput == null)
-	{
-		console.log(22);
-	}
-
-	let mail = mailInput.value;
-	let password = passwordInput.value;
+	console.log(identifiantform);
+	console.log(mailInput);
+	console.log(passwordInput);
 
 	event.preventDefault();
 
-	if (mail == "" || password == "")
+	if(mailInput.value != "" && passwordInput != "")
 	{
-		alert("identifiants invalide");
-	}
-	else
-	{
-		identifiant['mailAdress'] = mail;
-		identifiant['password'] = password;
-
-		console.log(identifiant['mailAdress']);
+		fetch('/connexion',
+		{
+			method: "POST",
+			body: new FormData(document.getElementById("identifiantInput"))
+		})
+		.then(response => 
+		{
+			return response.json();
+		})
+		.then(data => 
+		{
+		    console.log(data)
+		})
+		.catch(error =>
+		{
+			console.error(error);
+		});
 	}
 }

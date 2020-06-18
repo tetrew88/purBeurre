@@ -20,7 +20,7 @@ h2
     background-position: top right; /* Le fond sera placé en haut à droite */
 
     width: 100%;
-    height: 80%;
+    height: 100%;
 }
 
 .introduction input
@@ -34,11 +34,6 @@ h2
 	border-radius:10px;
 }
 
-.identifiantForm
-{
-	margin-bottom: 2%;
-}
-
 .inscriptionBanner
 {
 	background-color: blue;
@@ -49,4 +44,13 @@ h2
 .buttonZone
 {
 	margin-bottom: 2%;
+}
+
+.mailZone
+{
+	width: 20%;
+	border: 3px inset grey;
+	border-radius:10px;
+
+	background: grey;
 }

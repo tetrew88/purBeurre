@@ -28,7 +28,7 @@
   </head>
 
 	<body>
-		<div class="container-expand-lg">
+		<div class="container">
 		   	<div class="row">
 		   				
 			   	<nav class="col navbar navbar-expand-lg bg-dark navbar-dark">
@@ -102,32 +102,29 @@
 			   	<div class="container">
 			   		<div class="row">
 			   			<div class="col inscriptionBanner">
-			   				<p class="text-center">Connection/Inscription</p>
+			   				<p class="text-center">Connexion/Inscription</p>
 			   			</div>
 			   		</div>
 
-			   		<div class="identifiantForm">
-						<form id="identifiantInput">
-							<div class="row">
-					   			<div class="col text-center">
-					   				<label for="mailAdress">adresse mail:</label>
-						   			<input type=”email” id=”mailAdress” placeholder=”test@test.fr”>
-						   		</div>
+					<form id="identifiantInput" method="post" onsubmit="collect_identifiant(event); return false;">
+						<div class="row">
+					   		<div class="col text-center">
+					   			<label for="mailAdress">adresse mail:</label>
+						   		<input type=”email” id=”mailAdress” placeholder=”test@test.fr”>
 						   	</div>
+						</div>
 
-							<div class="row">
-					   			<div class="col text-center">
-					   				<label for="password">mot de passe:</label>
-						   			<input type=”password” id=”password” placeholder=”**********”>
-						   		</div>
-							</div>
-						</form>
-
-					</div>
+						<div class="row">
+				   			<div class="col text-center">
+				   				<label for="password">mot de passe:</label>
+					   			<input type=”password” id=”password” placeholder=”**********”>
+					   		</div>
+						</div>
+					</form>
 
 					<div class="row">
 						<div class="col text-center buttonZone">
-							<button id="connexionButton" type="button" class="btn btn-success" onclick="collect_identifiant(); return false;">Connexion</button>
+							<button id="connexionButton" type="button" class="btn btn-success" onclick="collect_identifiant(event); return false;">Connexion</button>
 							<button id="inscriptionButton" type="button" class="btn btn-primary">Inscription</button>
 							
 						</div>
