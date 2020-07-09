@@ -10,20 +10,28 @@ import requests
 from .forms import IdentificationForm
 
 def index(request):
-    template = loader.get_template('pages/index.html')
-    return HttpResponse(template.render(request=request))
+	form = IdentificationForm(request.POST or None)
+
+	template = loader.get_template('pages/index.html')
+	return HttpResponse(template.render(request=request))
 
 def account(request):
 	template = loader.get_template('pages/account.html')
 	return HttpResponse(template.render(request=request))
 
-"""def connexion(request):
+def connexion(request):
 	print("yes")
+
+	template = loader.get_template('pages/index.html')
+
 	if request.method == 'POST':
 		form = IdentificationForm(request.POST)
 
 		if form.is_valid():
 			return HttpResponseRedirect('connected')
+			print("identifer")
+		else:
+			return HttpResponseRedirect('error')
 
 	#user = authenticate(username='john', password='secret')
 
@@ -33,5 +41,5 @@ def account(request):
     #	pass*/
 
 def inscription(request):
-	user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')"""
+	user = User.objects.create_user('john', 'lennon@thebeatles.com', 'johnpassword')
 

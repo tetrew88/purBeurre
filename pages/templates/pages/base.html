@@ -106,9 +106,10 @@
 			   			</div>
 			   		</div>
 
+					<form id="identifiantInput" method="post" action="{% url 'pages:connexion' %}">
 
+						{% csrf_token %}
 
-					<form id="identifiantInput">
 						<div class="row">
 					   		<div class="col text-center">
 					   			<label for="mailAdress">adresse mail:</label>
@@ -122,16 +123,17 @@
 					   			<input type=”password” id=”password” placeholder=”**********”>
 					   		</div>
 						</div>
+
+						<div class="row">
+							<div class="col text-center buttonZone">
+								<button id="connexionButton" type="submit" class="btn btn-success">Connexion</button>
+
+								<button id="inscriptionButton" type="button" class="btn btn-primary">Inscription</button>
+								
+							</div>
+						</div>
 					</form>
 
-					<div class="row">
-						<div class="col text-center buttonZone">
-							<button id="connexionButton" type="submit" class="btn btn-success">Connexion</button>
-
-							<button id="inscriptionButton" type="button" class="btn btn-primary">Inscription</button>
-							
-						</div>
-					</div>
 			   	</div>
 
 			</div>
