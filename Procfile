@@ -1,1 +1,1 @@
-web: gunicorn disquaire_project.wsgi
+web: gunicorn purBeurre_project.wsgi
