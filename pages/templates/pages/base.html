@@ -33,7 +33,7 @@
 		   				
 			   	<nav class="col navbar navbar-expand-lg bg-dark navbar-dark">
 			   		<img src="{% static 'pages/img/logo.png' %}" alt="Site logo">
-					<a class="navbar-brand mr-auto" href="#">Pur Beurre</a>
+					<a class="navbar-brand mr-auto" href="/">Pur Beurre</a>
 
 			   		<div class="text-right">
 			   			<form>
@@ -48,7 +48,7 @@
 					<div id='navbarContent' class='collapse navbar-collapse'>
 				   		<ul class="navbar-nav ml-auto">
 				      		<li class="nav-item active">
-				       			<a class="nav-link" href="#">mon compte</a>
+				       			<a class="nav-link" href="/account.html">mon compte</a>
 					   		</li>
 
 					      	<li class="nav-item">
@@ -93,51 +93,53 @@
 		   	</div>
 		</div>
 
-	<!-- Modal part (connexion menu) -->
+	<!-- Modal connexion menu -->
 	<div class="modal" id="connexion">
 	
-		<div class="modal-dialog">
-			<div class="modal-content">
+	<!-- Modal connexion menu -->
+	<div class="modal-dialog">
+		<div class="modal-content">
 
-			   	<div class="container">
-			   		<div class="row">
-			   			<div class="col inscriptionBanner">
-			   				<p class="text-center">Connexion/Inscription</p>
-			   			</div>
-			   		</div>
+			<div class="container">
+				<div class="row">
+				   	<div class="col inscriptionBanner">
+				   		<p class="text-center">Connexion/Inscription</p>
+				  	</div>
+				</div>
 
-					<form id="identifiantInput" method="post" action="{% url 'pages:connexion' %}">
+				<form id="identifiantInput" method="post">
 
-						{% csrf_token %}
+					{% csrf_token %}
 
-						<div class="row">
-					   		<div class="col text-center">
-					   			<label for='mailAdress'>adresse mail:</label>
-						   		<input type='email' id='mailAdress' placeholder=”test@test.fr”>
-						   	</div>
+					<div class="row">
+					   	<div class="col text-center">
+					   		<label for="{{ form.mail.id_for_label }}">adresse mail:</label>
+					   		{{ form.mail }}
 						</div>
+					</div>
 
-						<div class="row">
-				   			<div class="col text-center">
-				   				<label for='password'>mot de passe:</label>
-					   			<input type='password' id='password' placeholder='********'>
-					   		</div>
+					<div class="row">
+					   	<div class="col text-center">
+					   		<label for="{{ form.password.id_for_label }}">mot de passe:</label>
+					   		{{ form.password }}
 						</div>
+					</div>
 
-						<div class="row">
-							<div class="col text-center buttonZone">
-								<button id="connexionButton" type="submit" class="btn btn-success">Connexion</button>
 
-								<button id="inscriptionButton" type="button" class="btn btn-primary">Inscription</button>
-								
-							</div>
+					<div class="row">
+						<div class="col text-center buttonZone">
+							<button id="connexionButton" type="submit" class="btn btn-success" formaction="{% url 'pages:connexion' %}">Connexion</button>
+
+							<button id="inscriptionButton" type="submit" class="btn btn-primary" formaction="{% url 'pages:inscription' %}">Inscription</button>
+									
 						</div>
-					</form>
-
-			   	</div>
+					</div>
+				</form>
 
 			</div>
+
 		</div>
+	</div>
 
 	</div>
 

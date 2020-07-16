@@ -25,6 +25,7 @@ from pages import views
 urlpatterns = [
 	url(r'^$', views.index),
     url(r'^connexion/', include('pages.urls', namespace='pages')),
+    url(r'^inscription/', include('pages.urls', namespace='pages')),
 	url(r'^account', views.account),
    	url(r'^admin/', admin.site.urls)
 ]
