@@ -42,14 +42,12 @@ def connexion(request):
 
 			print('connecter')
 
-			"""
-				user = authenticate(username='john', password='secret')
+			user = authenticate(username='john', password='secret')
 
-				if user is not None:
-					pass
-    			else:
-    				pass
-    		"""
+			if user is not None:
+				pass
+			else:
+				pass
 		else:
 			print("Erreur dans la remise du formulaire de conexion")
 
@@ -74,17 +72,10 @@ def inscription(request):
 
 			print("user: " + username)
 			print("password: " + password)
+			
+			user = User.objects.create_user(username, username, password)
 
 			print("Inscrit")
-			
-			"""
-				user = authenticate(username=username, password=password)
-			
-				if user is not None:
-					print("inscrit")
-				else:
-			    	print("erreur lors de l'inscription")
-			"""
 
 		else:
 			print("Erreur dans le forulaire d'inscription")

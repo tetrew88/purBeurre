@@ -29,7 +29,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['purbeurreoc1.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -94,8 +94,12 @@ WSGI_APPLICATION = 'purBeurre_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
+        'NAME': 'purBeurre', # le nom de notre base de donnees creee precedemment
+        'USER': 'donovan', # attention : remplacez par votre nom d'utilisateur
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '5432',
     }
 }
 
