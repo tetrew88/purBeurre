@@ -6,8 +6,7 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^login/$', views.connexion, name='connexion'),
-    url(r'^logon/$', views.inscription, name='inscription')
+	 url(r'^index/$', views.index, name='index'),
 ]
 
 app_name = 'pages'

@@ -21,11 +21,11 @@ from django.conf.urls import include
 from django.conf.urls import url
 
 from pages import views
+from authentification import views as authentificationViews
 
 urlpatterns = [
 	url(r'^$', views.index),
-    url(r'^connexion/', include('pages.urls', namespace='pages')),
-    url(r'^inscription/', include('pages.urls', namespace='pages')),
+    url(r'^authentification/', include('authentification.urls', namespace='authentification')),
 	url(r'^account', views.account),
    	url(r'^admin/', admin.site.urls)
 ]

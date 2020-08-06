@@ -128,9 +128,9 @@
 
 					<div class="row">
 						<div class="col text-center buttonZone">
-							<button id="connexionButton" type="submit" class="btn btn-success" formaction="{% url 'pages:connexion' %}">Connexion</button>
+							<button id="connexionButton" type="submit" class="btn btn-success" formaction="{% url 'authentification:connexion' %}">Connexion</button>
 
-							<button id="inscriptionButton" type="submit" class="btn btn-primary" formaction="{% url 'pages:inscription' %}">Inscription</button>
+							<button id="inscriptionButton" type="submit" class="btn btn-primary" formaction="{% url 'authentification:inscription' %}">Inscription</button>
 									
 						</div>
 					</div>
@@ -145,7 +145,6 @@
 
     <!-- Optional JavaScript -->
 
-	<script src="{% static 'pages/js/identification.js' %}"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

@@ -12,8 +12,7 @@ class Product(models.Model):
 	name = models.CharField(max_length = 100, null = False)
 	ingredients = models.CharField(max_length = 200)
 	label = models.CharField(max_length = 100)
-	packaging = models.CharField(max_length = 100)
-	saturedFat = models.CharField(max_length = 100)
+	saturatedFat = models.CharField(max_length = 100)
 	fat = models.CharField(max_length = 100)
 	salt =models.CharField(max_length = 100)
 	sugar = models.CharField(max_length = 100)
@@ -28,6 +27,6 @@ class Product(models.Model):
 class Profil(models.Model):
 	mailAdress = models.EmailField(max_length=100)
 	password = models.CharField(max_length=100)
-	user = models.OneToOneField(User)
+	user = models.OneToOneField(User, on_delete = models.CASCADE)
 
 	favorites = models.ManyToManyField(Product, related_name = 'product')
