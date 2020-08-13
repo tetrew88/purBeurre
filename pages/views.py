@@ -1,11 +1,10 @@
 from django.shortcuts import render 
 
-import requests
-
-from .forms import IdentificationForm
+from .forms import *
 
 def index(request):
-	form = IdentificationForm()
+	identifiantForm = IdentificationForm()
+	searchForm = SearchForm
 
 	template = 'pages/index.html'
 	return render(request, template, locals())

@@ -17,3 +17,12 @@ class IdentificationForm(forms.Form):
 		widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         required=True
     )
+
+
+class SearchForm(forms.Form):
+	keyword = forms.CharField(
+		label='Rechercher',
+		max_length=100,
+		widget=forms.TextInput(attrs={'class': 'form-control'}),
+		required=True
+	)

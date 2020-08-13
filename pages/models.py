@@ -2,31 +2,11 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-
-class Category(models.Model):
-	name = models.CharField(max_length = 100)
-	url = models.URLField()
-
-
-class Product(models.Model):
-	name = models.CharField(max_length = 100, null = False)
-	ingredients = models.CharField(max_length = 200)
-	label = models.CharField(max_length = 100)
-	saturatedFat = models.CharField(max_length = 100)
-	fat = models.CharField(max_length = 100)
-	salt =models.CharField(max_length = 100)
-	sugar = models.CharField(max_length = 100)
-	allergen = models.CharField(max_length = 100)
-	nutriscore = models.CharField(max_length = 100)
-	url = models.URLField()
-	pictureUrl = models.URLField()
-
-	category = models.ManyToManyField(Category, related_name = 'category')
-
+from substitutesearch.models import *
 
 class Profil(models.Model):
-	mailAdress = models.EmailField(max_length=100)
-	password = models.CharField(max_length=100)
+	mailAdress = models.EmailField(max_length=100, null = False, unique=True)
+	password = models.CharField(max_length=100, null = False)
 	user = models.OneToOneField(User, on_delete = models.CASCADE)
 
 	favorites = models.ManyToManyField(Product, related_name = 'product')

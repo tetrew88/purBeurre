@@ -22,10 +22,12 @@ from django.conf.urls import url
 
 from pages import views
 from authentification import views as authentificationViews
+from substitutesearch import views as searchViews
 
 urlpatterns = [
 	url(r'^$', views.index),
     url(r'^authentification/', include('authentification.urls', namespace='authentification')),
 	url(r'^account', views.account),
-   	url(r'^admin/', admin.site.urls)
+   	url(r'^admin/', admin.site.urls),
+    url(r'^searchSubstitute/', include('substitutesearch.urls', namespace='search'))
 ]

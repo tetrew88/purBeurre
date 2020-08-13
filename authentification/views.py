@@ -1,40 +1,30 @@
 from django.template import loader
 
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
-
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 from django.shortcuts import render 
 
-import requests
-
 from .forms import IdentificationForm
 
 
 def connexion(request):
-	form = IdentificationForm()
+	identifiantForm = IdentificationForm()
 
 	template = 'pages/index.html'
 
 	if request.method == 'POST':
-		form = IdentificationForm(request.POST)
+		identifiantForm = IdentificationForm(request.POST)
 
-		if form.is_valid():
+		if identifiantForm.is_valid():
 
 			username = request.POST.get('mail')
 			password = request.POST.get('password')
 
-			print("user: " + username)
-			print("password: " + password)
-
-			print('connecter')
-
-			user = authenticate(username='john', password='secret')
+			user = authenticate(username=username, password=password)
 
 			if user is not None:
-				pass
+				print('connecter')
 			else:
 				pass
 		else:

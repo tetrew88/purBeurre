@@ -19,10 +19,13 @@
 
 	    <div class="row">
 	      	<div class="col text-center">
-		      	<form>
-				   	<input type=”text” class=”form-control” placeholder=”Produit” id=”product”>
+		      	<form method="POST" action="{% url 'substitutesearch:search' %}">
+		      		{% csrf_token %}
+		      		
+				   	{{ searchForm.keyword }}
 				   	<button type="submit" class="btn btn-primary">
-				   		<span class="fa fa-search"></span>Chercher
+				   		<span class="fa fa-search"></span>
+				   		{{searchForm.keyword.label}}
 				   	</button>
 				</form>
 			</div>

@@ -36,8 +36,10 @@
 					<a class="navbar-brand mr-auto" href="/">Pur Beurre</a>
 
 			   		<div class="text-right">
-			   			<form>
-					   		<input type=”text” placeholder=”Chocapic” id=”keyword”>
+			   			<form method="POST" action="{% url 'substitutesearch:search' %}">
+			   				{% csrf_token %}
+			   				
+			   				{{ searchForm.keyword }}
 						</form>
 					</div>
 
@@ -113,15 +115,15 @@
 
 					<div class="row">
 					   	<div class="col text-center">
-					   		<label for="{{ form.mail.id_for_label }}">adresse mail:</label>
-					   		{{ form.mail }}
+					   		<label for="{{ identifiantForm.mail.id_for_label }}">adresse mail:</label>
+					   		{{ identifiantForm.mail }}
 						</div>
 					</div>
 
 					<div class="row">
 					   	<div class="col text-center">
-					   		<label for="{{ form.password.id_for_label }}">mot de passe:</label>
-					   		{{ form.password }}
+					   		<label for="{{ identifiantForm.password.id_for_label }}">mot de passe:</label>
+					   		{{ identifiantForm.password }}
 						</div>
 					</div>
 
