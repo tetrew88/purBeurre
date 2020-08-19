@@ -4,9 +4,10 @@
 {% load static %}
 
 	<header>
-		<div class="row">
+		<div class="row resultBanner">
 			<div class="col text-center">
 				<h2>Résultat</h2>
+			</div>
 		</div>
 	</header>
 
@@ -21,7 +22,7 @@
 						<div class="card productBox">
 							<img class="img-fluid rounded d-block" src={{ produit.pictureUrl }} alt="product_picture">
 							
-							<div class="card-title text-center productBanner" style=margin-bottom:0%>
+							<div class="card-title text-center productTitle" style=margin-bottom:0%>
 								{{ produit.name }}
 	   						</div>
 

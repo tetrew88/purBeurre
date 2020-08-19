@@ -18,11 +18,6 @@ h2
     background-position: center; /* Le fond sera placé en haut à droite */
 }
 
-.presentation
-{
-	background-color: #86EBE6;
-}
-
 
 .contactSection
 {
@@ -89,10 +84,10 @@ h2
 
 .resultBanner
 {
-	margin-top: 2%;
+	
 }
 
-.productBanner
+.productTitle
 {
 	background: #E8A75D;
 }
