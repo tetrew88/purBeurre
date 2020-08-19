@@ -28,7 +28,7 @@
   </head>
 
 	<body>
-		<div class="container">
+		<div class="container-fluid">
 		   	<div class="row">
 		   				
 			   	<nav class="col navbar navbar-expand-lg bg-dark navbar-dark">
@@ -36,7 +36,7 @@
 					<a class="navbar-brand mr-auto" href="/">Pur Beurre</a>
 
 			   		<div class="text-right">
-			   			<form method="POST" action="{% url 'substitutesearch:search' %}">
+			   			<form method="POST" action="{% url 'search:search' %}">
 			   				{% csrf_token %}
 			   				
 			   				{{ searchForm.keyword }}
@@ -68,16 +68,11 @@
 			</div>
 		</div>
 
-
-		<div class="container">
-		   	<div class="row">
-		      	{% block content %}
-			    {% endblock %}
-			</div>
-		</div>
+		{% block content %}
+		{% endblock %}
 
 
-		<div class="container">
+		<div class="container-fluid">
 		   	<div class="row bg-dark">
 
 				  	<footer class='col page-footer'>
@@ -95,6 +90,9 @@
 		   	</div>
 		</div>
 
+
+
+
 	<!-- Modal connexion menu -->
 	<div class="modal" id="connexion">
 	
@@ -102,7 +100,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 
-			<div class="container">
+			<div class="container-fluid">
 				<div class="row">
 				   	<div class="col inscriptionBanner">
 				   		<p class="text-center">Connexion/Inscription</p>

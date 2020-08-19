@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
     'authentification.apps.AuthentificationConfig',
-    'substitutesearch.apps.SubstitutesearchConfig'
+    'substitutesearch.apps.SubstitutesearchConfig',
+    'favorites.apps.FavoritesConfig'
 ]
 
 MIDDLEWARE = [

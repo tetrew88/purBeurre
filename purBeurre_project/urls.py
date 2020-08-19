@@ -29,5 +29,6 @@ urlpatterns = [
     url(r'^authentification/', include('authentification.urls', namespace='authentification')),
 	url(r'^account', views.account),
    	url(r'^admin/', admin.site.urls),
-    url(r'^searchSubstitute/', include('substitutesearch.urls', namespace='search'))
+    url(r'^searchSubstitute/', include('substitutesearch.urls', namespace='search')),
+    url(r'^favorites/', include('favorites.urls', namespace='favorites')),
 ]

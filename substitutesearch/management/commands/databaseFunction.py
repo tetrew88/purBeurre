@@ -25,7 +25,7 @@ def addProductInDatabase(productData, categoriesList):
 
 
 	for category in categoriesList:
-		url = "https://fr.openfoodfacts.org/cgi/search.pl?categories={}&action=process&page_size=100&json=1".format(category.replace(' ', '+'))
+		url = "https://fr.openfoodfacts.org/cgi/search.pl?search_terms={}&search_simple=1&action=process".format(category.replace(' ', '+'))
 
 		tmpCategory = searchCategoryInDatabase(category)
 		if tmpCategory:
@@ -55,18 +55,20 @@ def addProductInDatabase(productData, categoriesList):
 
 
 def searchProductInDatabase(name):
-	product = Product.objects.filter(name__icontains = name)
+	product = Product.objects.all()
+	product = product.filter(name__icontains = name)
 
-	if len(product) > 0:
-		return product
-	else:
+	if not product.exists():
 		return False
+	else:
+		return product
 
 
 def searchCategoryInDatabase(name):
-	category = Category.objects.filter(name__icontains = name)
+	category = Category.objects.all()
+	category = category.filter(name__icontains = name)
 
-	if len(category) == 0:
+	if not category.exists():
 		return False
 	else:
 		return category
@@ -84,5 +86,21 @@ def searchProductOnOFF(keyword):
 	return result
 
 
-def searchSubstitute(categoryName, nuitriscore):
-	pass()
+def searchSubstitute(product):
+	categoriesList = substituteList = []
+
+	categoriesList = product.category.all()
+			
+	for category in categoriesList:
+		productList = Product.objects.all()
+		
+		if productList.exists():
+			for element in productList:
+				for x in element.category.all():
+					if x.id == category.id:
+						substituteList.append(element)
+
+			return substituteList
+
+		else:
+			return False

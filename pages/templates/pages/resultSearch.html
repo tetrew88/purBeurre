@@ -1,0 +1,45 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+{% load static %}
+
+	<header>
+		<div class="row">
+			<div class="col text-center">
+				<h2>Résultat</h2>
+		</div>
+	</header>
+
+
+	<section>
+		<div class="row">
+			<div class="col resultBox">
+				
+				<div class="row">
+					<div class="col-3">
+						
+						<div class="card productBox">
+							<img class="img-fluid rounded d-block" src={{ produit.pictureUrl }} alt="product_picture">
+							
+							<div class="card-title text-center productBanner" style=margin-bottom:0%>
+								{{ produit.name }}
+	   						</div>
+
+	   						<div class="row">
+								<div class="col">
+									 <a href="/favorites/{{produit.name}}/" class="btn btn-product btn-info btn-block">
+									 	Sauvegarder
+									 </a>
+								</div>
+	   						</div>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

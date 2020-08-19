@@ -3,15 +3,15 @@ from django.template import loader
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
-from django.shortcuts import render 
+from django.shortcuts import redirect
 
-from .forms import IdentificationForm
+from pages.forms import *
 
 
 def connexion(request):
 	identifiantForm = IdentificationForm()
 
-	template = 'pages/index.html'
+	template = '/'
 
 	if request.method == 'POST':
 		identifiantForm = IdentificationForm(request.POST)
@@ -34,13 +34,13 @@ def connexion(request):
 		pass
 	
 
-	return render(request, template, locals())
+	return redirect(template, locals())
 
 
 def inscription(request):
 	form = IdentificationForm()
 
-	template = 'pages/index.html'
+	template = '/'
 
 	if request.method == 'POST':
 		form = IdentificationForm(request.POST)
@@ -62,4 +62,4 @@ def inscription(request):
 	else:
 		pass
 
-	return render(request, template, locals())
+	return redirect(template, locals())

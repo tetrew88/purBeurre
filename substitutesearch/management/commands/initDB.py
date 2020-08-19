@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
 	def initDB(self):
 		productCategoriesList = []
-		categoriesList = ['Snacks', 'Boissons', 'Viandes', 'Desserts', 'Sauces', 'Riz']
+		categoriesList = ['Snacks', 'Boissons', 'Viandes', 'Desserts', 'Riz']
 		result = []
 
 		url = ""
