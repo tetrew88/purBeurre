@@ -29,45 +29,53 @@
 
 	<body>
 		<div class="container-fluid">
-		   	<div class="row">
-		   				
-			   	<nav class="col navbar navbar-expand-lg bg-dark navbar-dark">
+			<div class="row">
+			   				
+				<nav class="col navbar navbar-expand-lg">
 			   		<img src="{% static 'pages/img/logo.png' %}" alt="Site logo">
 					<a class="navbar-brand mr-auto" href="/">Pur Beurre</a>
 
-			   		<div class="text-right">
-			   			<form method="POST" action="{% url 'search:search' %}">
-			   				{% csrf_token %}
-			   				
-			   				{{ searchForm.keyword }}
+				   	<div class="text-right">
+				   		<form method="POST" action="{% url 'search:search' %}">
+				   			{% csrf_token %}
+				   				
+				   			{{ searchForm.keyword }}
 						</form>
 					</div>
 
-			   		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
-						<span class="navbar-toggler-icon"></span>
+				   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
+							<span class="navbar-toggler-icon"></span>
 					</button>
 
 					<div id='navbarContent' class='collapse navbar-collapse'>
-				   		<ul class="navbar-nav ml-auto">
-				      		<li class="nav-item active">
-				       			<a class="nav-link" href="/account.html">mon compte</a>
-					   		</li>
+					   	<ul class="navbar-nav ml-auto">
+						    {% if user.is_authenticated %}
+						      	<li class="nav-item active">
+						       		<a class="nav-link" href="/account.html">mon compte</a>
+							   	</li>
 
-					      	<li class="nav-item">
-					       		<a class="nav-link" href="#">mes aliments</a>
-					      	</li>
+							    <li class="nav-item">
+							 		<a class="nav-link" href="#">mes aliments</a>
+							    </li>
 
-							<li class="nav-item">
-				     			<button type="button" data-toggle="modal" data-target="#connexion" class="btn btn-secondary">connexion</button></a>
-				      		</li>
-				   		</ul>
+							    <li class="nav-item">
+						     		<a href="{% url 'authentification:deconnexion' %}" class="btn btn-info">
+										deconnexion
+									</a>
+						      	</li>
+
+						    {% else %}
+								<li class="nav-item">
+						     		<button type="button" data-toggle="modal" data-target="#connexion" class="btn btn-secondary">connexion</button></a>
+						      	</li>
+					      	{% endif %}
+
+					   	</ul>
 					</div>
 
-		   		</nav>
-
+			   	</nav>
 			</div>
 		</div>
-
 		{% block content %}
 		{% endblock %}
 
@@ -102,19 +110,18 @@
 
 			<div class="container-fluid">
 				<div class="row">
-				   	<div class="col inscriptionBanner">
-				   		<p class="text-center">Connexion/Inscription</p>
+				   	<div class="col authentificationBanner">
+				   		<p class="text-center">Connexion</p>
 				  	</div>
 				</div>
 
 				<form id="identifiantInput" method="post">
-
 					{% csrf_token %}
 
 					<div class="row">
 					   	<div class="col text-center">
-					   		<label for="{{ identifiantForm.mail.id_for_label }}">adresse mail:</label>
-					   		{{ identifiantForm.mail }}
+					   		<label for="{{ identifiantForm.name.id_for_label }}">pseudo:</label>
+					   		{{ identifiantForm.name }}
 						</div>
 					</div>
 
@@ -130,7 +137,9 @@
 						<div class="col text-center buttonZone">
 							<button id="connexionButton" type="submit" class="btn btn-success" formaction="{% url 'authentification:connexion' %}">Connexion</button>
 
-							<button id="inscriptionButton" type="submit" class="btn btn-primary" formaction="{% url 'authentification:inscription' %}">Inscription</button>
+							<a href="{% url 'authentification:register' %}" class="btn btn-info">
+								S'incrire
+							</a>
 									
 						</div>
 					</div>

@@ -4,6 +4,11 @@ h2
 	margin-top: 2%;
 }
 
+.navbar
+{
+	background-color: #345A61;
+}
+
 .navbar input
 {
 	border: 3px inset grey;
@@ -11,6 +16,24 @@ h2
 
 	background: grey;
 }
+
+.navbar-brand
+{
+	padding-right: 2%;
+}
+
+.buttonZone
+{
+	margin-top: 2%
+	margin-bottom: 2%;
+}
+
+
+.register
+{
+	background-color: #DE9440;
+}
+
 
 .introduction
 {
@@ -40,15 +63,16 @@ h2
 	border-radius:10px;
 }
 
-.inscriptionBanner
+.authentificationBanner
 {
-	background-color: blue;
+	background-color: #86EBE6;
 
 	margin-bottom: 2%;
 }
 
 .buttonZone
 {
+	padding-top: 1%;
 	margin-bottom: 2%;
 }
 

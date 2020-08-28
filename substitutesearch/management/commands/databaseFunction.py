@@ -1,4 +1,5 @@
 from substitutesearch.models import *
+from authentification.models import *
 
 import json
 import requests

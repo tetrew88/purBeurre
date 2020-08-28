@@ -21,6 +21,7 @@ from django.conf.urls import include
 from django.conf.urls import url
 
 from pages import views
+
 from authentification import views as authentificationViews
 from substitutesearch import views as searchViews
 

@@ -8,6 +8,7 @@ from .models import *
 
 from .management.commands.databaseFunction import *
 
+
 def search(request):
 	result = False
 	product = False

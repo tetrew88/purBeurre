@@ -4,7 +4,8 @@ from django.conf import settings
 import requests
 import json
 
-from pages.models import *
+from substitutesearch.models import *
+from authentification.models import *
 
 from .databaseFunction import *
 

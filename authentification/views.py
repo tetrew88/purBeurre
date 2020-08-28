@@ -1,11 +1,12 @@
 from django.template import loader
+from django.shortcuts import render
 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 
 from django.shortcuts import redirect
 
-from pages.forms import *
+from .forms import *
 
 
 def connexion(request):
@@ -18,15 +19,16 @@ def connexion(request):
 
 		if identifiantForm.is_valid():
 
-			username = request.POST.get('mail')
+			username = request.POST.get('name')
 			password = request.POST.get('password')
 
 			user = authenticate(username=username, password=password)
 
 			if user is not None:
+				login(request, user)
 				print('connecter')
 			else:
-				pass
+				print('utilisateur invalide')
 		else:
 			print("Erreur dans la remise du formulaire de conexion")
 
@@ -37,22 +39,20 @@ def connexion(request):
 	return redirect(template, locals())
 
 
-def inscription(request):
-	form = IdentificationForm()
+def register(request):
+	identifiantForm = RegisterForm()
 
-	template = '/'
+	template = 'pages/register.html'
 
 	if request.method == 'POST':
-		form = IdentificationForm(request.POST)
+		identifiantForm = RegisterForm(request.POST)
 
-		if form.is_valid():
-			username = request.POST.get('mail')
+		if identifiantForm.is_valid():
+			username = request.POST.get('name')
+			mail = request.POST.get('mail')
 			password = request.POST.get('password')
-
-			print("user: " + username)
-			print("password: " + password)
 			
-			user = User.objects.create_user(username, username, password)
+			user = User.objects.create_user(username, mail, password)
 
 			print("Inscrit")
 
@@ -61,5 +61,13 @@ def inscription(request):
 
 	else:
 		pass
+
+	return render(request, template, locals())
+
+
+def deconnexion(request):
+	template = '/'
+
+	logout(request)
 
 	return redirect(template, locals())

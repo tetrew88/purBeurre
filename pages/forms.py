@@ -2,27 +2,5 @@
 
 from django import forms
 
-
-class IdentificationForm(forms.Form):
-	mail = forms.EmailField(
-		label = "adresse mail",
-		max_length=100,
-		widget=forms.EmailInput(attrs={'class': 'form-control'}),
-        required=True
-    )
-
-	password = forms.CharField(
-		label='mot de passe',
-		max_length=100,
-		widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        required=True
-    )
-
-
-class SearchForm(forms.Form):
-	keyword = forms.CharField(
-		label='Rechercher',
-		max_length=100,
-		widget=forms.TextInput(attrs={'class': 'form-control'}),
-		required=True
-	)
+from substitutesearch.forms import *
+from authentification.forms import *
