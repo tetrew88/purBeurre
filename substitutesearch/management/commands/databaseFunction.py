@@ -97,11 +97,12 @@ def searchSubstitute(product):
 		
 		if productList.exists():
 			for element in productList:
-				for x in element.category.all():
-					if x.id == category.id:
-						substituteList.append(element)
+				if element.name != product.name:
+					substituteList.append(element)
 
+
+	if len(substituteList) > 0:
+		for substitute in substituteList:
 			return substituteList
-
-		else:
-			return False
+	else:
+		return False

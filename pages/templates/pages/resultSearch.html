@@ -17,30 +17,58 @@
 			<div class="col resultBox">
 				
 				<div class="row">
-					<div class="col-3">
-						
-						<div class="card productBox">
-							<img class="img-fluid rounded d-block" src={{ produit.pictureUrl }} alt="product_picture">
+					{% for product in substitutes %}
+						<div class="col-4">
 							
-							<div class="card-title text-center productTitle" style=margin-bottom:0%>
-								{{ produit.name }}
-	   						</div>
+							<div class="card productBox" style=margin-bottom:5%>
+								<img class="img-fluid rounded d-block" src={{ product.pictureUrl }} alt="product_picture">
+								
+								<div class="card-title text-center productTitle" style=margin-bottom:0%>
+									{{ product.name }}
+		   						</div>
 
-	   						<div class="row">
-								<div class="col">
-									 <a href="/favorites/{{produit.name}}/" class="btn btn-product btn-info btn-block">
-									 	Sauvegarder
-									 </a>
-								</div>
-	   						</div>
+		   						<div class="row">
+									<div class="col">
+										 <a href="/favorites/{{product.name}}" class="btn btn-product btn-info btn-block">
+										 	Sauvegarder
+										 </a>
+									</div>
+		   						</div>
+
+							</div>
 
 						</div>
-
-					</div>
+					{% endfor %}
 				</div>
 
 			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-4"></div>
+
+			<div class="col-4">
+				{% if paginate %}
+		  			<div class="clearfix"></div>
+		  				<nav aria-label="">
+		    				<ul class="pager">
+		      					{% if substitutes.has_previous %}
+		          					<li><a href="?page={{ substitutes.previous_page_number }}">Précédent</a></li>
+		      					{% endif %}
+		    
+		    					{% if substitutes.has_next %}
+		          					<li><a href="?page={{ substitutes.next_page_number }}">Suivant</a></li>
+		      					{% endif %}
+		    				</ul>
+		  				</nav>
+				{% endif %}
+			</div>
+
+
+			<div class="col-4"></div>
+		</div>
+
+
 	</section>
 
 {% endblock %}

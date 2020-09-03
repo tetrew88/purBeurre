@@ -4,6 +4,6 @@ from . import views
 
 
 urlpatterns = [
-	 url(r'^(?P<productId>)/$', views.addToFavorite, name='addToFavorites'),
+	 url(r'^<productId>/$', views.addToFavorite, name='addToFavorites'),
 ]
 app_name = 'favorites'

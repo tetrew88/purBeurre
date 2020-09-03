@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 import requests
 import json
@@ -8,13 +9,17 @@ from .models import *
 
 from .management.commands.databaseFunction import *
 
+from authentification.forms import *
+
 
 def search(request):
 	result = False
 	product = False
 
 	productCategoriesList = substituteList = []
+	
 	searchForm = SearchForm()
+	identifiantForm = IdentificationForm()
 
 	tmpCategory = ""
 
@@ -48,11 +53,22 @@ def search(request):
 			print("produit trouver")
 			substituteList = searchSubstitute(product[0])
 
-			print(substituteList)
+			if substituteList:
+				print("substitut trouver")
 
+				paginate = True
+
+				paginator = Paginator(substituteList, 9)
+				page = request.GET.get('page')
+
+				try:
+					substitutes = paginator.page(page)
+				except PageNotAnInteger:
+					substitutes = paginator.page(1)
+				except EmptyPage:
+					substitutes = paginator.page(paginator.num_pages)
+		
 		else:
 			print("produit rechercher non trouver")
-
-		produit = substituteList[0]
 
 	return render(request, template, locals())
