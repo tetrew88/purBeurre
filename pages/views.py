@@ -11,5 +11,5 @@ def index(request):
 
 
 def account(request):
-	template = loader.get_template('pages/account.html')
-	return HttpResponse(template.render(request=request))
+	template = 'pages/account.html'
+	return render(request, template, locals())

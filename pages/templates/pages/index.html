@@ -3,40 +3,53 @@
 {% block content %}
 {% load static %}
 
+	{% if succes %}
+		<div class="alert alert-success" role="alert">Compte creer avec succes</div>
+	{% endif %}
 		
-	<section>
+	<section class="masthead d-flex">
 		<div class="container-fluid introduction">
+			<div class="row">
 
-		   	<div class="row">
-		   		<div class="col">
-		      		<h1 class="text-center">Du gras, oui, mais de qualité !</h1>
-		      	</div>
-		   	</div>
+				<div class="col">
+				   	<div class="row">
 
-		    <div class="row">
-		      	<div class="col">
-		      		<h2 class="text-center">Trouvez un produit de substitution pour ceux que vos consommez tout les jours</h2>
-		      	</div>
-		    </div>
+				   		<div class="col">
+				      		<h1 class="text-center">
+				      			<strong>
+				      				Du gras, oui, mais de qualité !
+				      			</strong>
+				      		</h1>
+				      	</div>
+				   	</div>
 
-		    <div class="row">
-		    	<div class="col-4"></div>
+				    <div class="row">
+				      	<div class="col">
+				      		<h2 class="text-center">Trouvez un produit de substitution pour ceux que vos consommez tout les jours</h2>
+				      	</div>
+				    </div>
 
-		      	<div class="col-4 text-center">
-			      	<form method="POST" action="{% url 'search:search' %}">
-			      		{% csrf_token %}
-			      		
-					   	{{ searchForm.keyword }}
+				    <div class="row">
+				    	<div class="col-3"></div>
 
-					   	<button type="submit" class="btn btn-primary buttonZone">
-					   		<span class="fa fa-search"></span>
-					   		{{searchForm.keyword.label}}
-					   	</button>
+				      	<div class="col-6 text-center">
+					      	<form method="POST" action="{% url 'search:search' %}">
+					      		{% csrf_token %}
+					      		
+							   	{{ searchForm.keyword }}
 
-					</form>
+							   	<button type="submit" class="btn btn-primary buttonZone">
+							   		<span class="fa fa-search"></span>
+							   		{{searchForm.keyword.label}}
+							   	</button>
+
+							</form>
+						</div>
+
+						<div class="col-3"></div>
+
+					</div>
 				</div>
-
-				<div class="col-4"></div>
 
 			</div>
 		</div>
@@ -63,15 +76,15 @@
 		   		</div>
 		   	</div>
 
-			<div class="row">
-		   		<div class="col-6">
+			<div class="row center">
+		   		<div class="col-4 ml-auto">
 		   			<img class=”img-responsive” style=width:100% src="{% static 'pages/img/colette.jpg' %}" alt="photo de colette">
 		      		<p class="text-center">
 			      		Colette
 			      	</p>
 				</div>
 
-			   	<div class="col-6">
+			   	<div class="col-4 mr-auto">
 			   		<img class=”img-responsive” style=width:100% src="{% static 'pages/img/remy.jpg' %}" alt="photo de colette">
 			      	<p class="text-center">
 			      		Remy

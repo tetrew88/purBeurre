@@ -53,14 +53,14 @@ def register(request):
 			password = request.POST.get('password')
 			
 			user = User.objects.create_user(username, mail, password)
+			logout(request)
 
-			print("Inscrit")
+			identifiantForm = IdentificationForm()
 
-		else:
-			print("Erreur dans le forulaire d'inscription")
+			succes = True
 
-	else:
-		pass
+			return redirect('/', locals())
+			
 
 	return render(request, template, locals())
 

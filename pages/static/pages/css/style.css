@@ -1,32 +1,62 @@
+/*Title*/
 h2
 {
 	margin-bottom: 2%;
 	margin-top: 2%;
 }
+/**/
 
-.navbar
+
+/*Generic personal class*/
+.blocPage
 {
 	background-color: #345A61;
+	width: 100%;
 }
 
-.navbar input
+.logo
 {
-	border: 3px inset grey;
-	border-radius:10px;
+	width: 30px;
+	height: 30px;
 
-	background: grey;
+	margin: auto;
 }
+/**/
 
-.navbar-brand
+
+/*Navbar*/
+#mainNavbar
 {
-	padding-right: 2%;
+	background-color: #345A61;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	justify-content: flex-start;
+	align-items: flex-start;
+
+	width: auto;
+	margin: auto;
 }
 
-.buttonZone
+#mainNavbar .searchBar
 {
-	margin-top: 2%
-	margin-bottom: 2%;
+	align-self: flex-end;
 }
+
+.navLink
+{
+	margin-right: 3%;
+	margin-left: 5%;
+}
+
+#navbarContent li
+{
+	margin: auto;
+	margin-right: 8%;
+}
+/**/
 
 
 .register
@@ -38,7 +68,21 @@ h2
 .introduction
 {
 	background-image: url(../img/fond.jpg);
-    background-position: center; /* Le fond sera placé en haut à droite */
+    background-position: center;
+}
+
+.introductionBanner
+{
+	margin-bottom: 5%;
+	margin-top:5%;
+	background-color: black;
+	opacity: 0.85;
+	border-radius:10px;
+}
+
+.presentation
+{
+	background: white;
 }
 
 
