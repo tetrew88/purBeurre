@@ -51,6 +51,8 @@ def search(request):
 
 		if product:
 			print("produit trouver")
+			baseProduct = product[0]
+			
 			substituteList = searchSubstitute(product[0])
 
 			if substituteList:

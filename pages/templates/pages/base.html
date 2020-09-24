@@ -36,9 +36,9 @@
 					<nav class="col navbar navbar-expand-lg" id="mainNavbar">
 				   		<img src="{% static 'pages/img/logo.png' %}" alt="Site logo" class="logo">
 						
-						<a class="navbar-brand ml-auto" href="/">Pur Beurre</a>
+						<a class="navbar-brand ml-auto" style="margin: auto" href="/">Pur Beurre</a>
 
-					   	<div class="text-right">
+					   	<div class="navbarSearch ml-auto mr-auto">
 					   		<form method="POST" action="{% url 'search:search' %}">
 					   			{% csrf_token %}
 					   				

@@ -8,7 +8,7 @@
 	{% endif %}
 		
 	<section class="masthead d-flex">
-		<div class="container-fluid introduction">
+		<div class="introduction">
 			<div class="row">
 
 				<div class="col">
@@ -25,7 +25,9 @@
 
 				    <div class="row">
 				      	<div class="col">
-				      		<h2 class="text-center">Trouvez un produit de substitution pour ceux que vos consommez tout les jours</h2>
+				      		<h2 class="text-center">
+				      			Trouvez un produit de substitution pour ceux que vos consommez tout les jours
+				      		</h2>
 				      	</div>
 				    </div>
 
@@ -55,6 +57,8 @@
 		</div>
 	</section>
 
+	<div class="row separation1"></div>
+
 	<section class="presentation">
 		<div class="container-fluid">
 			   
@@ -78,14 +82,18 @@
 
 			<div class="row center">
 		   		<div class="col-4 ml-auto">
-		   			<img class=”img-responsive” style=width:100% src="{% static 'pages/img/colette.jpg' %}" alt="photo de colette">
+		   			<div class="pictureFrame">
+		   				<img class=”img-responsive” style=width:100%; src="{% static 'pages/img/colette.jpg' %}" alt="photo de colette">
+		   			</div>
 		      		<p class="text-center">
 			      		Colette
 			      	</p>
 				</div>
 
 			   	<div class="col-4 mr-auto">
-			   		<img class=”img-responsive” style=width:100% src="{% static 'pages/img/remy.jpg' %}" alt="photo de colette">
+			   		<div class="pictureFrame">
+			   			<img class=”img-responsive” style=width:100% src="{% static 'pages/img/remy.jpg' %}" alt="photo de colette">
+			   		</div>
 			      	<p class="text-center">
 			      		Remy
 			      	</p>
@@ -95,6 +103,7 @@
 		</div>
 	</section>
 
+	<div class="separation2"></div>
 
 	<section class="contactSection">
 		<div class="container-fluid">

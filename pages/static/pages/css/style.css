@@ -21,6 +21,36 @@ h2
 
 	margin: auto;
 }
+
+.separation1
+{
+	width: 100%;
+	height: 15px;
+
+	margin: auto;
+
+	background: #86EBE6;
+}
+
+.separation2
+{
+	width: 100%;
+	height: 15px;
+
+	margin: auto;
+
+	background: #C45525;
+}
+
+.separation3
+{
+	width: 100%;
+	height: 15px;
+
+	margin: auto;
+
+	background: #E8A75D;
+}
 /**/
 
 
@@ -40,11 +70,6 @@ h2
 	margin: auto;
 }
 
-#mainNavbar .searchBar
-{
-	align-self: flex-end;
-}
-
 .navLink
 {
 	margin-right: 3%;
@@ -56,36 +81,24 @@ h2
 	margin: auto;
 	margin-right: 8%;
 }
+
+.navbarSearch
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	justify-content: flex-end;
+	align-items: flex-start;
+
+	margin: auto;
+
+	width: 100%;
+}
 /**/
 
 
-.register
-{
-	background-color: #DE9440;
-}
-
-
-.introduction
-{
-	background-image: url(../img/fond.jpg);
-    background-position: center;
-}
-
-.introductionBanner
-{
-	margin-bottom: 5%;
-	margin-top:5%;
-	background-color: black;
-	opacity: 0.85;
-	border-radius:10px;
-}
-
-.presentation
-{
-	background: white;
-}
-
-
+/*base*/
 .contactSection
 {
 	background-color: #DE9440;
@@ -96,22 +109,10 @@ h2
 	margin: auto;
 }
 
-.introduction input
-{
-	margin-bottom: 3%;
-}
-
 .modal-dialog
 {
 	border: 3px inset blue;
 	border-radius:10px;
-}
-
-.authentificationBanner
-{
-	background-color: #86EBE6;
-
-	margin-bottom: 2%;
 }
 
 .buttonZone
@@ -119,7 +120,52 @@ h2
 	padding-top: 1%;
 	margin-bottom: 2%;
 }
+/**/
 
+
+/*index*/
+.introduction
+{
+	width: 100%;
+
+	background-image: url(../img/fond.jpg);
+    background-position: center;
+}
+
+.introduction input
+{
+	margin-bottom: 3%;
+}
+
+.pictureFrame
+{
+	border: 6px inset #C45525;
+	border-radius:10px;
+}
+
+.presentation
+{
+	background: #E8A75D;
+}
+/**/
+
+
+/*register*/
+.authentificationBanner
+{
+	background-color: #86EBE6;
+
+	margin-bottom: 2%;
+}
+
+.register
+{
+	background-color: #DE9440;
+}
+/**/
+
+
+/*account*/
 .mailZone
 {
 	width: 20%;
@@ -128,7 +174,10 @@ h2
 
 	background: grey;
 }
+/**/
 
+
+/*result*/
 .resultBox
 {
 	border: 3px inset blue;
@@ -141,13 +190,15 @@ h2
 
 	opacity: 1.5;
 
+	margin-right: 2%;
+	margin-left: 2%; 
+
 }
 
 .productBox
 {
 	border: 3px inset grey;
-	background: #E8A75D;
-	background: red;
+	border-radius: 6px;
 }
 
 .resultBanner
@@ -159,3 +210,4 @@ h2
 {
 	background: #E8A75D;
 }
+/**/
