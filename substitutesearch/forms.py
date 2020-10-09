@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from django import forms
+from favorites.forms import *
 
 
 class SearchForm(forms.Form):

@@ -10,6 +10,7 @@ from .models import *
 from .management.commands.databaseFunction import *
 
 from authentification.forms import *
+from substitutesearch.forms import *
 
 
 def search(request):
@@ -20,15 +21,16 @@ def search(request):
 	
 	searchForm = SearchForm()
 	identifiantForm = IdentificationForm()
+	favoriteForm = FavoriteForm()
 
 	tmpCategory = ""
 
 	template = 'pages/resultSearch.html'
 
 	if request.method == 'POST':
-		identifiantForm = SearchForm(request.POST)
+		searchForm = SearchForm(request.POST)
 
-		if identifiantForm.is_valid():
+		if searchForm.is_valid():
 			keyword = request.POST.get('keyword')
 
 			product = searchProductInDatabase(keyword)
@@ -51,8 +53,7 @@ def search(request):
 
 		if product:
 			print("produit trouver")
-			baseProduct = product[0]
-			
+
 			substituteList = searchSubstitute(product[0])
 
 			if substituteList:
@@ -60,8 +61,8 @@ def search(request):
 
 				paginate = True
 
-				paginator = Paginator(substituteList, 9)
 				page = request.GET.get('page')
+				paginator = Paginator(substituteList, 9)
 
 				try:
 					substitutes = paginator.page(page)
@@ -72,5 +73,8 @@ def search(request):
 		
 		else:
 			print("produit rechercher non trouver")
+
+	else:
+		page = request.GET.get('page')
 
 	return render(request, template, locals())

@@ -3,13 +3,16 @@
 {% block content %}
 {% load static %}
 
-	<header>
-		<div class="row resultBanner" style=background-image: url({{ baseProduct.pictureUrl }})>
-			<div class="col text-center">
-				<h2>Résultat</h2>
+	<section>
+		<div class="row resultBanner">
+			<div class="col" style=background-image: url({{ product.pictureUrl }})>
+
+				<div class="col text-center">
+					<h2>Résultat</h2>
+				</div>
 			</div>
 		</div>
-	</header>
+	</section>
 
 
 	<section>
@@ -17,23 +20,33 @@
 			<div class="col resultBox">
 				
 				<div class="row">
-					{% for product in substitutes %}
+					{% for subst in substitutes %}
 						<div class="col-4">
 							
 							<div class="card productBox" style=margin-bottom:5%>
-								<img class="img-fluid rounded d-block" src={{ product.pictureUrl }} alt="product_picture">
+								<img class="img-fluid rounded d-block" src={{ subst.pictureUrl }} alt="product_picture">
 								
 								<div class="card-title text-center productTitle" style=margin-bottom:0%>
-									{{ product.name }}
+									{{ subst.name }}
 		   						</div>
 
-		   						<div class="row">
-									<div class="col">
-										 <a href="/favorites/{{product.name}}" class="btn btn-product btn-info btn-block">
-										 	Sauvegarder
-										 </a>
-									</div>
-		   						</div>
+		   						{% if user.is_authenticated %}
+			   						<div class="row">
+										<div class="col">
+											<form method="POST" action="{% url 'favorites:addToFavorites' %}">
+												{% csrf_token %}
+
+												<input type="hidden" name="productName" value="{{ product.name }}">
+												<input type="hidden" name="substituteName" value="{{ subst.name }}">
+												
+												<button type="submit" class="btn btn-primary" style="width: 100%">
+								   						Enregistrer
+								   				</button>
+												
+											</form>
+										</div>
+			   						</div>
+			   					{% endif %}
 
 							</div>
 
