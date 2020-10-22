@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from substitutesearch.models import *
+from favorites.models import *
 
 
 # Create your models here.
@@ -12,4 +13,4 @@ class Profil(models.Model):
 	password = models.CharField(max_length=100, null = False)
 	user = models.OneToOneField(User, on_delete = models.CASCADE)
 
-	favorites = models.ManyToManyField(Product, related_name = 'product')
+	favorites = models.ManyToManyField(Favorites, related_name = 'favorites')

@@ -54,7 +54,9 @@ def search(request):
 		if product:
 			print("produit trouver")
 
-			substituteList = searchSubstitute(product[0])
+			product = product[0]
+
+			substituteList = searchSubstitute(product)
 
 			if substituteList:
 				print("substitut trouver")
@@ -76,5 +78,6 @@ def search(request):
 
 	else:
 		page = request.GET.get('page')
+		print(page)
 
 	return render(request, template, locals())

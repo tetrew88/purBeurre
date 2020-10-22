@@ -16,3 +16,9 @@ class FavoriteForm(forms.Form):
 		widget=forms.TextInput(attrs={'class': 'form-control'}),
 		required=True
 	)
+
+	userId = forms.IntegerField(
+		label ='userId',
+		widget =  forms.NumberInput(attrs={'class': 'form-control'}),
+		required = True
+	)
