@@ -165,19 +165,7 @@ h2
 /**/
 
 
-/*account*/
-.mailZone
-{
-	width: 20%;
-	border: 3px inset grey;
-	border-radius:10px;
-
-	background: grey;
-}
-/**/
-
-
-/*result*/
+/*result/account*/
 .resultBox
 {
 	border: 3px inset blue;
@@ -200,7 +188,9 @@ h2
 	border: 3px inset grey;
 	border-radius: 6px;
 }
+/**/
 
+/*result*/
 .resultBanner
 {
 	
@@ -209,5 +199,31 @@ h2
 .productTitle
 {
 	background: #E8A75D;
+}
+/**/
+
+
+/*account*/
+.usernameBox
+{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.usernameLabel
+{
+	margin: auto;
+}
+
+.mailZone
+{
+	width: 20%;
+	border: 3px inset grey;
+	border-radius:10px;
+
+	background: grey;
+
+	margin-top: 5%;
+	margin-bottom: 5%;
 }
 /**/

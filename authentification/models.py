@@ -10,7 +10,6 @@ from favorites.models import *
 class Profil(models.Model):
 	name = models.CharField(max_length=100, null = False, unique=True)
 	mailAdress = models.EmailField(max_length=100, null = False, unique=True)
-	password = models.CharField(max_length=100, null = False)
 	user = models.OneToOneField(User, on_delete = models.CASCADE)
 
 	favorites = models.ManyToManyField(Favorites, related_name = 'favorites')

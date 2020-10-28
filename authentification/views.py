@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 
 from .forms import *
+from .models import *
 
 
 def connexion(request):
@@ -53,7 +54,10 @@ def register(request):
 			password = request.POST.get('password')
 			
 			user = User.objects.create_user(username, mail, password)
+			profil = Profil(name = username, mailAdress = mail, user = user)
+
 			logout(request)
+			profil.save()
 
 			identifiantForm = IdentificationForm()
 

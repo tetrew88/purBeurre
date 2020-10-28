@@ -106,3 +106,12 @@ def searchSubstitute(product):
 			return substituteList
 	else:
 		return False
+
+
+def searchProfil(userName):
+	profil = Profil.objects.all()
+	profil = profil.filter(name = userName)
+
+	print(profil)
+
+	return profil

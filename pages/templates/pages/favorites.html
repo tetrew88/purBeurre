@@ -1,0 +1,60 @@
+{% block content %}
+{% load static %}
+
+	<div class="row .introduction">
+			<div class="col">
+
+				<div class="row">
+					<div class="col-5"></div>
+					<div class="col-2 usernameBox">
+						<p class="text-center usernameLabel">
+							Favoris
+						</p>
+					</div>
+					<div class="col-5"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="row separation1"></div>
+
+	<div class="row">
+		<div class="col resultBox">
+			{% if productCounteur > 0 %}
+				{% for product in productList %}
+					<div class="row">
+						<p class="text-center">Produit</p>
+
+						<div class="col-2"></div>
+						<div class="col-8" style="width: 100%">							
+							<div class="card productBox" style=margin-bottom:5%>
+								<img class="img-fluid rounded d-block" src={{ product.pictureUrl }} alt="product_picture">
+										
+								<div class="card-title text-center productTitle" style=margin-bottom:0%>
+									{{ product.name }}
+				   				</div>
+							</div>
+						<div class="col-2"></div>
+					</div>
+
+					{% for favorite in favorites[{{ product.name }}] %}
+						<div class="col-4">							
+							<div class="card productBox" style=margin-bottom:5%>
+								<img class="img-fluid rounded d-block" src={{ favorite.pictureUrl }} alt="product_picture">
+										
+								<div class="card-title text-center productTitle" style=margin-bottom:0%>
+									{{ favorite.name }}
+				   				</div>
+							</div>
+					{% endfor %}
+				{% endfor %}
+
+			{% else %}
+					<p class="text-center" style="margin: auto"> Aucun Favoris</p>
+			{% endif %}
+		</div>
+	</div>
+
+	{% endblock %}

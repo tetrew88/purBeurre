@@ -2,6 +2,8 @@
 
 from django import forms
 
+from authentification.models import *
+
 class FavoriteForm(forms.Form):
 	productName = forms.CharField(
 		label='product name',
@@ -15,10 +17,4 @@ class FavoriteForm(forms.Form):
 		max_length=100,
 		widget=forms.TextInput(attrs={'class': 'form-control'}),
 		required=True
-	)
-
-	userId = forms.IntegerField(
-		label ='userId',
-		widget =  forms.NumberInput(attrs={'class': 'form-control'}),
-		required = True
 	)
