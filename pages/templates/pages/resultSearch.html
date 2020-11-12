@@ -5,7 +5,8 @@
 
 	<section>
 		<div class="row resultBanner">
-			<div class="col" style=background-image: url({{ product.pictureUrl }})>
+			<div class="col" style="background-image: url({{ product.pictureUrl }})">
+
 
 				<div class="col text-center">
 					<h2>Résultat</h2>
@@ -14,6 +15,7 @@
 		</div>
 	</section>
 
+	<div class="row separation1"></div>
 
 	<section>
 		<div class="row">
@@ -24,7 +26,17 @@
 						<div class="col-4">
 							
 							<div class="card productBox" style=margin-bottom:5%>
-								<img class="img-fluid rounded d-block" src={{ subst.pictureUrl }} alt="product_picture">
+								<form method="POST" action="{% url 'search:detail' %}">
+									{% csrf_token %}
+
+									<input type="hidden" name="keyword" value="{{ subst.name }}">
+
+									<button type="submit" style="width: 100%">
+
+										<img class="img-fluid rounded" src={{ subst.pictureUrl }} alt="product_picture">
+
+									</button>
+								</form>
 								
 								<div class="card-title text-center productTitle" style=margin-bottom:0%>
 									{{ subst.name }}
@@ -83,5 +95,8 @@
 
 
 	</section>
+
+	<div class="row separation2"></div>
+
 
 {% endblock %}

@@ -227,3 +227,38 @@ h2
 	margin-bottom: 5%;
 }
 /**/
+
+
+/*detail*/
+.productPresentation
+{
+	background-color: #E8A75D;
+}
+
+.productPlug
+{
+	border: 3px inset;
+	border-radius:10px;
+
+	background-color: #86EBE6;
+
+	padding-top: 3%;
+	padding-bottom: 3%;
+
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+
+.informationFrame
+{
+	margin-top: 5%;
+	margin-bottom: 5%; 
+}
+
+.detailFrame
+{
+	margin-top: 5%; 
+	margin-bottom: 5%; 
+}
+/**/

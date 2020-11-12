@@ -9,8 +9,9 @@ from .models import *
 
 from .management.commands.databaseFunction import *
 
+from favorites.forms import *
 from authentification.forms import *
-from substitutesearch.forms import *
+from .forms import *
 
 
 def search(request):
@@ -20,6 +21,7 @@ def search(request):
 	productCategoriesList = substituteList = []
 	
 	searchForm = SearchForm()
+	detailForm = DetailForm()
 	identifiantForm = IdentificationForm()
 	favoriteForm = FavoriteForm()
 
@@ -33,8 +35,10 @@ def search(request):
 		if searchForm.is_valid():
 			keyword = request.POST.get('keyword')
 
+			#cherche le produit dans la base de donnée
 			product = searchProductInDatabase(keyword)
 
+			#si le produit n'as pas ete trouver le cherche sur off
 			if product == False:
 				result = searchProductOnOFF(keyword)
 
@@ -51,33 +55,73 @@ def search(request):
 					else:
 						pass
 
+		#si un produit est valide
 		if product:
 			print("produit trouver")
 
 			product = product[0]
 
+			#cherche les substituts du produits
 			substituteList = searchSubstitute(product)
 
-			if substituteList:
-				print("substitut trouver")
+			request.method = 'GET'
+			request.GET._mutable = True 
+			request.GET['substituteList'] = substituteList
+			request.GET._mutable = False
 
-				paginate = True
-
-				page = request.GET.get('page')
-				paginator = Paginator(substituteList, 9)
-
-				try:
-					substitutes = paginator.page(page)
-				except PageNotAnInteger:
-					substitutes = paginator.page(1)
-				except EmptyPage:
-					substitutes = paginator.page(paginator.num_pages)
+			return listing(request)
 		
 		else:
 			print("produit rechercher non trouver")
 
-	else:
+	if request.method == 'GET':
+		print('getttt')
+
+	return render(request, template, locals())
+
+
+def listing(request):
+	template = 'pages/resultSearch.html'
+	paginate = True
+
+	if request.method == 'GET':
+
 		page = request.GET.get('page')
-		print(page)
+		substituteList = request.GET.get('substituteList')
+
+		print(request.GET)
+
+		paginator = Paginator(substituteList, 9)
+
+		try:
+			substitutes = paginator.page(page)
+		except PageNotAnInteger:
+			substitutes = paginator.page(1)
+		except EmptyPage:
+			substitutes = paginator.page(paginator.num_pages)
+
+	return render(request, template, locals())
+
+
+def detail(request):
+	searchForm = SearchForm()
+	detailForm = DetailForm()
+
+	identifiantForm = IdentificationForm()
+	favoriteForm = FavoriteForm()
+
+	template = 'pages/detail.html'
+
+	if request.method == 'POST':
+		print(request.POST)
+		detailForm = DetailForm(request.POST)
+
+		if detailForm.is_valid():
+			keyword = request.POST.get('keyword')
+
+			#cherche le produit dans la base de donnée
+			product = searchProductInDatabase(keyword)
+
+			product = product[0]
 
 	return render(request, template, locals())

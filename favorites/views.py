@@ -3,14 +3,19 @@ from django.shortcuts import render
 from .forms import *
 from .models import *
 
+from substitutesearch.views import *
+
+from authentification.forms import *
+from substitutesearch.forms import *
+
 from substitutesearch.models import *
 from substitutesearch.management.commands.databaseFunction import *
 
 # Create your views here.
 def addToFavorite(request):
-	favoritesForm = FavoriteForm()
-
-	template = 'pages/index.html'
+	searchForm = SearchForm()
+	identifiantForm = IdentificationForm()
+	favoriteForm = FavoriteForm()
 
 	if request.method == 'POST':
 		favoritesForm = FavoriteForm(request.POST)
@@ -23,16 +28,20 @@ def addToFavorite(request):
 		if productName != None and substituteName != None and user != None:
 			product = searchProductInDatabase(productName)
 			substitute = searchProductInDatabase(substituteName)
-			user = searchProfil(user.username)
+			profil = searchProfil(user.username)
 
 			favorite = Favorites(product=product[0], substitute=substitute[0])
 
 			favorite.save()
 
-			user[0].favorites.add(favorite)
+			profil[0].favorites.add(favorite)
 			print("produit ajouter")
 
-	return render(request, template, locals())
+	"""request.POST._mutable = True 
+	request.POST['keyword'] = productName
+	request.POST._mutable = False"""
+
+	return search(request)
 
 
 def showFavorites(request):
