@@ -8,6 +8,7 @@ class TestAuthentification(TestCase):
 
 	def testInscription(self)
 		""" test inscription of an user """
+		
 		response = self.client.post('/register/', {'name': 'test', 'mailAdress': 'test@test.fr', 'password': '123456'})
 		
 		self.assertEquals(response.status_code, 200)

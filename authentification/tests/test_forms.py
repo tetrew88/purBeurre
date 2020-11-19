@@ -18,8 +18,8 @@ class TestAuthentificationForm(TransactionTestCase):
 
 
 	def testIdentificationFormValidity(self):
-		self.assertTrue(form.is_valid())
+		self.assertTrue(registerForm.is_valid())
 
 
 	def testConnexionFormValidity(self)
-		self.assertTrue(form.is_valid())
+		self.assertTrue(registerForm.is_valid())

@@ -39,7 +39,7 @@
 						<div class="col-2"></div>
 					</div>
 
-					{% for favorite in favorites[{{ product.name }}] %}
+					{% for favorite in favorites[product.name] %}
 						<div class="col-4">							
 							<div class="card productBox" style=margin-bottom:5%>
 								<img class="img-fluid rounded d-block" src={{ favorite.pictureUrl }} alt="product_picture">
