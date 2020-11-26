@@ -19,11 +19,6 @@ def search(request):
 	product = False
 
 	productCategoriesList = substituteList = []
-	
-	searchForm = SearchForm()
-	detailForm = DetailForm()
-	identifiantForm = IdentificationForm()
-	favoriteForm = FavoriteForm()
 
 	tmpCategory = ""
 
@@ -69,7 +64,7 @@ def search(request):
 			request.GET['substituteList'] = substituteList
 			request.GET._mutable = False
 
-			return listing(request)
+			return listing(request, product)
 		
 		else:
 			print("produit rechercher non trouver")
@@ -80,7 +75,12 @@ def search(request):
 	return render(request, template, locals())
 
 
-def listing(request):
+def listing(request, product):
+	searchForm = SearchForm()
+	detailForm = DetailForm()
+	identifiantForm = IdentificationForm()
+	favoriteForm = FavoriteForm()
+
 	template = 'pages/resultSearch.html'
 	paginate = True
 

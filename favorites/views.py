@@ -37,14 +37,14 @@ def addToFavorite(request):
 			profil[0].favorites.add(favorite)
 			print("produit ajouter")
 
-	"""request.POST._mutable = True 
-	request.POST['keyword'] = productName
-	request.POST._mutable = False"""
-
 	return search(request)
 
 
 def showFavorites(request):
+	searchForm = SearchForm()
+	identifiantForm = IdentificationForm()
+	favoriteForm = FavoriteForm()
+	
 	template = 'pages/favorites.html'
 	
 	productCounteur = 0
@@ -59,19 +59,20 @@ def showFavorites(request):
 		user = user[0]
 
 		favoritesList = user.favorites.all()
-
-		for favorite in favoritesList:
-			if favorite.product.name not in productList:
-				productList.append(favorite.product)
-
-		for product in productList:
-			favorites[product.name] = []
-
-		for favorite in favoritesList:
-			favorites[favorite.product.name].append(favorite.substitute)
-
 		productCounteur = len(productList)
 
-		print("\n\n" + str(favorites) + "\n\n")
+		"""
+			for favorite in favoritesList:
+				if favorite.product.name not in productList:
+					productList.append(favorite.product)
+
+			for product in productList:
+				favorites[product.name] = []
+
+			for favorite in favoritesList:
+				favorites[favorite.product.name].append(favorite.substitute)
+
+			print("\n\n" + str(favorites) + "\n\n")
+		"""
 
 	return render(request, template, locals())

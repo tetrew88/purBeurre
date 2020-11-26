@@ -32,4 +32,5 @@ urlpatterns = [
    	url(r'^admin/', admin.site.urls),
     url(r'^searchSubstitute/', include('substitutesearch.urls', namespace='search')),
     url(r'^favorites/', include('favorites.urls', namespace='favorites')),
+    url(r'^legalMention', views.legalMention),
 ]

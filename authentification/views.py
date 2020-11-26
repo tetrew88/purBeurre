@@ -53,7 +53,11 @@ def register(request):
 			mail = request.POST.get('mail')
 			password = request.POST.get('password')
 			
-			user = User.objects.create_user(username, mail, password)
+			try:
+				user = User.objects.create_user(username, mail, password)
+			except:
+				return render(request, template, locals())
+				
 			profil = Profil(name = username, mailAdress = mail, user = user)
 
 			logout(request)
