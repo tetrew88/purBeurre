@@ -6,7 +6,7 @@ class TestAuthentification(TestCase):
 
 	self.client = Client()
 
-	def testInscription(self)
+	def test_Inscription(self)
 		""" test inscription of an user """
 		
 		response = self.client.post('/register/', {'name': 'test', 'mailAdress': 'test@test.fr', 'password': '123456'})
@@ -15,7 +15,7 @@ class TestAuthentification(TestCase):
         self.assertTemplateUsed(response, '/')
 
 
-    def testConnexion(self):
+    def test_Connexion(self):
     	response = self.client.post('/register/', {'name': 'test', 'password': '123456'})
 		
 		self.assertEquals(response.status_code, 200)

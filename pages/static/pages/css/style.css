@@ -1,13 +1,33 @@
 /*Title*/
+h1
+{
+	font-family: "Open Sans", sans-serif;
+}
+
+
 h2
 {
 	margin-bottom: 2%;
 	margin-top: 2%;
+
+	font-family: "Open Sans", sans-serif;
 }
+
 /**/
+
+p, li
+{
+	font-family: "Scope One", sans-serif;
+}
 
 
 /*Generic personal class*/
+.titleBox
+{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
 .blocPage
 {
 	background-color: #345A61;
@@ -51,6 +71,24 @@ h2
 
 	background: #E8A75D;
 }
+
+.frame
+{
+	border: 3px inset blue;
+	border-radius:10px;
+
+	background: #86EBE6;
+
+	margin: 1%;
+	padding: 2%;
+
+	opacity: 1.5;
+
+	margin-right: 2%;
+	margin-left: 2%; 
+
+}
+
 /**/
 
 
@@ -165,7 +203,7 @@ h2
 /**/
 
 
-/*result/account*/
+/*result/favorites*/
 .resultBox
 {
 	border: 3px inset blue;
@@ -204,12 +242,6 @@ h2
 
 
 /*account*/
-.usernameBox
-{
-	margin-top: 5%;
-	margin-bottom: 5%;
-}
-
 .usernameLabel
 {
 	margin: auto;

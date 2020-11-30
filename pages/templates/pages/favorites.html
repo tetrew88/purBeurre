@@ -1,51 +1,46 @@
 {% extends 'pages/base.html' %}
 
-
 {% block content %}
 {% load static %}
 
 
-	<section>
-		<div class="row introduction">
-				<div class="col">
+	<div class="row introduction">
+			<div class="col">
 
-					<div class="row">
-						<div class="col-5"></div>
-						<div class="col-2 usernameBox">
-							<p class="text-center usernameLabel">
-								Favoris
-							</p>
-						</div>
-						<div class="col-5"></div>
+				<div class="row">
+					<div class="col-5"></div>
+					<div class="col-2 titleBox">
+						<h2><strong>Favoris</strong></h2>
 					</div>
-
+					<div class="col-5"></div>
 				</div>
+
 			</div>
 		</div>
-	</section>
+	</div>
 
 	<div class="row separation1"></div>
 
-	<section>
-		<div class="row">
-			<div class="col resultBox">
-				<div class="row">
-					{% for favorite in favoritesList %}
+	<div class="row">
+		<div class="col resultBox">
+			<div class="row">
+				{% for favorite in favoritesList %}
 
-						<div class="col-4">							
-							<div class="card productBox" style=margin-bottom:5%>
-								<img class="img-fluid rounded" src={{ favorite.substitute.pictureUrl }} alt="product_picture">
+					<div class="col-4">							
+						<div class="card productBox" style=margin-bottom:5%>
+							<img class="img-fluid rounded" src={{ favorite.substitute.pictureUrl }} alt="product_picture">
 												
-								<div class="card-title text-center productTitle" style=margin-bottom:0%>
-									{{ favorite.substitute.name }}
-				   				</div>
+							<div class="card-title text-center productTitle" style=margin-bottom:0%>
+								{{ favorite.substitute.name }}
 				   			</div>
-						</div>
+				   		</div>
+					</div>
 
-					{% endfor %}
-				</div>
+				{% endfor %}
 			</div>
 		</div>
-	</section>
+	</div>
+
+	<div class="row separation2"></div>
 
 {% endblock %}

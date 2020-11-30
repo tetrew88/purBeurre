@@ -6,7 +6,7 @@ class TestFavorite(TestCase):
 
 	self.client = Client()
 
-	def testAddFavorite(self)
+	def test_AddFavorite(self)
 		""" test adding a favorite of an user """
 		
 		self.client.login(username='test', password='secret')
@@ -17,5 +17,5 @@ class TestFavorite(TestCase):
         self.assertTemplateUsed(response, '/')
 
 
-    def testShowFavorite(self):
+    def test_ShowFavorite(self):
     	pass

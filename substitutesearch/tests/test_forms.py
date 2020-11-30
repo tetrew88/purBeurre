@@ -15,9 +15,9 @@ class TestSubstituteSearchForm(TransactionTestCase):
 		})
 
 
-	def testSearchFormValidity(self):
+	def test_SearchFormValidity(self):
 		self.assertTrue(searchForm.is_valid())
 
 
-	def testDetailFormValidity(self)
+	def test_DetailFormValidity(self)
 		self.assertTrue(searchForm.is_valid())

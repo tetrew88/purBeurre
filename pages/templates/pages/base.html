@@ -21,6 +21,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}" />
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
 
 
     <title>Pur Beurre</title>
@@ -36,7 +38,7 @@
 					<nav class="col navbar navbar-expand-lg" id="mainNavbar">
 				   		<img src="{% static 'pages/img/logo.png' %}" alt="Site logo" class="logo">
 						
-						<a class="navbar-brand ml-auto" style="margin: auto" href="/">Pur Beurre</a>
+						<a class="navbar-brand ml-auto" style="margin: auto" href="/"><strong>Pur Beurre</strong></a>
 
 					   	<div class="navbarSearch ml-auto mr-auto">
 					   		<form method="POST" action="{% url 'search:search' %}">
@@ -96,8 +98,8 @@
 					   				<a href="/legalMention">Mentions légale</a>
 				       			</div>
 
-				        		<div class="col-6">
-				          			<p class="text-center">contact</p>
+				        		<div class="col-6 text-center">
+				          			<a href="/#contact">contact</a>
 				        		</div>
 				        	</div>
 				      	</footer>

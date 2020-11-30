@@ -37,6 +37,10 @@ def addToFavorite(request):
 			profil[0].favorites.add(favorite)
 			print("produit ajouter")
 
+		request.POST._mutable = True
+		request.POST['keyword'] = productName
+		request.POST._mutable = False
+
 	return search(request)
 
 
@@ -54,11 +58,11 @@ def showFavorites(request):
 
 	if request.method == 'GET':
 		user = request.user
-		user = searchProfil(user.username)
+		profil = searchProfil(user.username)
 
-		user = user[0]
+		profil = profil[0]
 
-		favoritesList = user.favorites.all()
+		favoritesList = profil.favorites.all()
 		productCounteur = len(productList)
 
 		"""

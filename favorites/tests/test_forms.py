@@ -3,7 +3,6 @@ from django.test import TransactionTestCase
 from .forms import *
 
 
-
 class TestFavoriteForm(TransactionTestCase):
 	""" classe testing authentification form """
 
@@ -13,5 +12,5 @@ class TestFavoriteForm(TransactionTestCase):
 		})
 
 
-	def testFavoriteFormValidity(self):
+	def test_FavoriteFormValidity(self):
 		self.assertTrue(FavoriteForm.is_valid())
