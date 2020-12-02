@@ -18,6 +18,11 @@ def search(request):
 	result = False
 	product = False
 
+	searchForm = SearchForm()
+	detailForm = DetailForm()
+	identifiantForm = IdentificationForm()
+	favoriteForm = FavoriteForm()
+
 	productCategoriesList = substituteList = []
 
 	tmpCategory = ""
@@ -59,46 +64,8 @@ def search(request):
 			#cherche les substituts du produits
 			substituteList = searchSubstitute(product)
 
-			request.method = 'GET'
-			request.GET._mutable = True 
-			request.GET['substituteList'] = substituteList
-			request.GET._mutable = False
-
-			return listing(request, product)
-		
-		else:
-			print("produit rechercher non trouver")
-
 	if request.method == 'GET':
 		print('getttt')
-
-	return render(request, template, locals())
-
-
-def listing(request, product):
-	searchForm = SearchForm()
-	detailForm = DetailForm()
-	identifiantForm = IdentificationForm()
-	favoriteForm = FavoriteForm()
-
-	template = 'pages/resultSearch.html'
-	paginate = True
-
-	if request.method == 'GET':
-
-		page = request.GET.get('page')
-		substituteList = request.GET.get('substituteList')
-
-		print(request.GET)
-
-		paginator = Paginator(substituteList, 9)
-
-		try:
-			substitutes = paginator.page(page)
-		except PageNotAnInteger:
-			substitutes = paginator.page(1)
-		except EmptyPage:
-			substitutes = paginator.page(paginator.num_pages)
 
 	return render(request, template, locals())
 

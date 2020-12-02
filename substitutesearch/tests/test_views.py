@@ -1,3 +1,5 @@
+from django.test import TestCase
+
 class TestSubstituteSearch(TestCase):
 	""" class testing the authentfication """
 

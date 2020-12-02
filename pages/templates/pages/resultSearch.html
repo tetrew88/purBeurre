@@ -18,77 +18,56 @@
 	<section>
 		<div class="row">
 			<div class="col resultBox">
-				
-				<div class="row">
-					{% for subst in substitutes %}
-						<div class="col-4">
-							
-							<div class="card productBox" style=margin-bottom:5%>
-								<form method="POST" action="{% url 'search:detail' %}">
-									{% csrf_token %}
-
-									<input type="hidden" name="keyword" value="{{ subst.name }}">
-
-									<button type="submit" style="width: 100%">
-
-										<img class="img-fluid rounded" src={{ subst.pictureUrl }} alt="product_picture">
-
-									</button>
-								</form>
+				{% if substituteList %}
+					<div class="row">
+						{% for subst in substituteList %}
+							<div class="col-4">
 								
-								<div class="card-title text-center productTitle" style=margin-bottom:0%>
-									{{ subst.name }}
-		   						</div>
+								<div class="card productBox" style=margin-bottom:5%>
+									<form method="POST" action="{% url 'search:detail' %}">
+										{% csrf_token %}
 
-		   						{% if user.is_authenticated %}
-			   						<div class="row">
-										<div class="col">
-											<form method="POST" action="{% url 'favorites:addToFavorites' %}">
-												{% csrf_token %}
+										<input type="hidden" name="keyword" value="{{ subst.name }}">
 
-												<input type="hidden" name="productName" value="{{ product.name }}">
-												<input type="hidden" name="substituteName" value="{{ subst.name }}">
-												
-												<button type="submit" class="btn btn-primary" style="width: 100%">
-								   						Enregistrer
-								   				</button>
-												
-											</form>
-										</div>
+										<button type="submit" style="width: 100%">
+
+											<img class="img-fluid rounded" src={{ subst.pictureUrl }} alt="product_picture">
+
+										</button>
+									</form>
+									
+									<div class="card-title text-center productTitle" style=margin-bottom:0%>
+										{{ subst.name }}
 			   						</div>
-			   					{% endif %}
+
+			   						{% if user.is_authenticated %}
+				   						<div class="row">
+											<div class="col">
+												<form method="POST" action="{% url 'favorites:addToFavorites' %}">
+													{% csrf_token %}
+
+													<input type="hidden" name="productName" value="{{ product.name }}">
+													<input type="hidden" name="substituteName" value="{{ subst.name }}">
+													
+													<button type="submit" class="btn btn-primary" style="width: 100%">
+									   						Enregistrer
+									   				</button>
+													
+												</form>
+											</div>
+				   						</div>
+				   					{% endif %}
+
+								</div>
 
 							</div>
-
-						</div>
-					{% endfor %}
-				</div>
-
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-4"></div>
-
-			<div class="col-4">
-				{% if paginate %}
-		  			<div class="clearfix"></div>
-		  				<nav aria-label="">
-		    				<ul class="pager">
-		      					{% if substitutes.has_previous %}
-		          					<li><a href="?page={{ substitutes.previous_page_number }}">Précédent</a></li>
-		      					{% endif %}
-		    
-		    					{% if substitutes.has_next %}
-		          					<li><a href="?page={{ substitutes.next_page_number }}">Suivant</a></li>
-		      					{% endif %}
-		    				</ul>
-		  				</nav>
+						{% endfor %}
+					</div>
+				{% else %}
+					<p>Aucun résultat</p>
 				{% endif %}
+
 			</div>
-
-
-			<div class="col-4"></div>
 		</div>
 
 

@@ -45,6 +45,7 @@ def addToFavorite(request):
 
 
 def showFavorites(request):
+	detailForm = DetailForm()
 	searchForm = SearchForm()
 	identifiantForm = IdentificationForm()
 	favoriteForm = FavoriteForm()
