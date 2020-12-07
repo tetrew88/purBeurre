@@ -99,7 +99,8 @@ def searchSubstitute(product):
 			for element in productList:
 				if category in element.category.all():
 					if element.name != product.name:
-						substituteList.append(element)
+						if element.nutriscore < product.nutriscore:
+							substituteList.append(element)
 
 
 	if len(substituteList) > 0:
