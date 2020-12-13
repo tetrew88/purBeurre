@@ -217,7 +217,9 @@ p, li
 	opacity: 1.5;
 
 	margin-right: 2%;
-	margin-left: 2%; 
+	margin-left: 2%;
+
+	width: 70%
 
 }
 
@@ -231,7 +233,7 @@ p, li
 /*result*/
 .resultBanner
 {
-	
+	margin: auto;
 }
 
 .productTitle
