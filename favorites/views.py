@@ -20,17 +20,15 @@ def addToFavorite(request):
 	if request.method == 'POST':
 		favoritesForm = FavoriteForm(request.POST)
 
-
 		productName = request.POST.get('productName')
 		substituteName = request.POST.get('substituteName')
 		user = request.user
 
-		if productName != None and substituteName != None and user != None:
-			product = searchProductInDatabase(productName)
+		if substituteName != None and user != None:
 			substitute = searchProductInDatabase(substituteName)
 			profil = searchProfil(user.username)
 
-			favorite = Favorites(product=product[0], substitute=substitute[0])
+			favorite = Favorites(substitute=substitute[0])
 
 			favorite.save()
 
