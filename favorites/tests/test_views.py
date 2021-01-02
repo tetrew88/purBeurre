@@ -11,7 +11,7 @@ class TestFavorite(TestCase):
 		
 		self.client.login(username='test', password='secret')
 
-		response = self.client.post('/favorites/addToFavorites/', {'productName': 'nutella', 'substituteName': 'Curly donuts cacahuètes '})
+		response = self.client.post('/favorites/addToFavorites/', {'substituteName': 'Curly donuts cacahuètes '})
 		
 		self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, '/')
