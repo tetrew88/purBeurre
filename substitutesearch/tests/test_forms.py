@@ -1,23 +1,22 @@
 from django.test import TransactionTestCase
 
-from .forms import *
+from substitutesearch.forms import *
 
 
 class TestSubstituteSearchForm(TransactionTestCase):
 	""" classe testing authentification form """
 
-	searchForm = SearchForm(data={
-		'keyword': 'test'
-		})
-
-	detailForm = IdentificationForm(data={
-		'keyword': 'test'
-		})
-
-
 	def test_SearchFormValidity(self):
+		searchForm = SearchForm(data={
+		'keyword': 'test'
+		})
+
 		self.assertTrue(searchForm.is_valid())
 
 
-	def test_DetailFormValidity(self)
-		self.assertTrue(searchForm.is_valid())
+	def test_DetailFormValidity(self):
+		detailForm = DetailForm(data={
+		'keyword': 'test'
+		})
+
+		self.assertTrue(detailForm.is_valid())

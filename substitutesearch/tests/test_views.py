@@ -1,21 +1,20 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 
 class TestSubstituteSearch(TestCase):
 	""" class testing the authentfication """
 
-	self.client = Client()
+	client = Client()
 
-	def test_Search(self)
-		""" test inscription of an user """
+	def test_Search(self):
+		""" test search of a product """
 		
-		response = self.client.post('/search/', {'keyword': 'nutella'})
-		
+		response = self.client.post('/searchSubstitute/search/', {'keyword': 'curly'})
+
 		self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'pages/resultSearch.html')
+		self.assertTemplateUsed(response, 'pages/resultSearch.html')
 
+	def test_Detail(self):
+		response = self.client.post('/searchSubstitute/detail/', {'keyword': 'curly'})
 
-    def test_Detail(self):
-    	response = self.client.post('/searchSubstitute/detail/', {'keyword': 'nutella'})
-		
 		self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, 'pages/resultSearch.html')
+		self.assertTemplateUsed(response, 'pages/resultSearch.html')

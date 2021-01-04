@@ -1,16 +1,15 @@
 from django.test import TransactionTestCase
 
-from .forms import *
+from favorites.forms import *
 
 
 class TestFavoriteForm(TransactionTestCase):
 	""" classe testing authentification form """
 
-	FavoriteForm = RegisterForm(data={
+	def test_FavoriteFormValidity(self):
+		favoriteForm = FavoriteForm(data={
 		'productName': 'nutella',
 		'substituteName': 'pate a tartiné'
 		})
 
-
-	def test_FavoriteFormValidity(self):
-		self.assertTrue(FavoriteForm.is_valid())
+		self.assertTrue(favoriteForm.is_valid())
