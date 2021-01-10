@@ -3,6 +3,8 @@ from django.test import TestCase, Client
 class TestSubstituteSearch(TestCase):
 	""" class testing the authentfication """
 
+	fixtures = ['fixture.json']
+
 	client = Client()
 
 	def test_Search(self):
@@ -17,4 +19,4 @@ class TestSubstituteSearch(TestCase):
 		response = self.client.post('/searchSubstitute/detail/', {'keyword': 'curly'})
 
 		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'pages/resultSearch.html')
+		self.assertTemplateUsed(response, 'pages/detail.html')

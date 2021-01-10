@@ -60,7 +60,6 @@ def register(request):
 				
 			profil = Profil(name = username, mailAdress = mail, user = user)
 
-			logout(request)
 			profil.save()
 
 			identifiantForm = IdentificationForm()
