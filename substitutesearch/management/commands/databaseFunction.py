@@ -113,6 +113,7 @@ def searchProfil(userName):
 	profil = Profil.objects.all()
 	profil = profil.filter(name = userName)
 
-	print(profil)
-
-	return profil
+	if len(profil) > 0:
+		return profil
+	else:
+		return False

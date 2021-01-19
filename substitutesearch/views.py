@@ -18,11 +18,6 @@ def search(request):
 	result = False
 	product = False
 
-	searchForm = SearchForm()
-	detailForm = DetailForm()
-	identifiantForm = IdentificationForm()
-	favoriteForm = FavoriteForm()
-
 	productCategoriesList = substituteList = []
 
 	tmpCategory = ""
@@ -64,18 +59,13 @@ def search(request):
 			#cherche les substituts du produits
 			substituteList = searchSubstitute(product)
 
-	if request.method == 'GET':
-		print('getttt')
-
-	return render(request, template, locals())
+	return render(request, template, {'detailForm':DetailForm(),
+		'searchForm':SearchForm(), 'identifiantForm':IdentificationForm(), 'favoriteForm':FavoriteForm(),
+		'product':product, 'substituteList':substituteList })
 
 
 def detail(request):
-	searchForm = SearchForm()
 	detailForm = DetailForm()
-
-	identifiantForm = IdentificationForm()
-	favoriteForm = FavoriteForm()
 
 	template = 'pages/detail.html'
 
@@ -91,4 +81,6 @@ def detail(request):
 
 			product = product[0]
 
-	return render(request, template, locals())
+	return render(request, template, {'detailForm':DetailForm(),
+		'searchForm':SearchForm(), 'identifiantForm':IdentificationForm(),
+		'product':product})

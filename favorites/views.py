@@ -13,10 +13,6 @@ from substitutesearch.management.commands.databaseFunction import *
 
 # Create your views here.
 def addToFavorite(request):
-	searchForm = SearchForm()
-	identifiantForm = IdentificationForm()
-	favoriteForm = FavoriteForm()
-
 	if request.method == 'POST':
 		favoritesForm = FavoriteForm(request.POST)
 
@@ -26,14 +22,15 @@ def addToFavorite(request):
 
 		if substituteName != None and user != None:
 			substitute = searchProductInDatabase(substituteName)
+			product = searchProductInDatabase(productName)
+
 			profil = searchProfil(user.username)
 
-			favorite = Favorites(substitute=substitute[0])
+			favorite = Favorites(substitute=substitute[0], product=product[0])
 
 			favorite.save()
 
 			profil[0].favorites.add(favorite)
-			print("produit ajouter")
 
 		request.POST._mutable = True
 		request.POST['keyword'] = productName
@@ -43,11 +40,6 @@ def addToFavorite(request):
 
 
 def showFavorites(request):
-	detailForm = DetailForm()
-	searchForm = SearchForm()
-	identifiantForm = IdentificationForm()
-	favoriteForm = FavoriteForm()
-	
 	template = 'pages/favorites.html'
 	
 	productCounteur = 0
@@ -74,8 +66,7 @@ def showFavorites(request):
 
 			for favorite in favoritesList:
 				favorites[favorite.product.name].append(favorite.substitute)
-
-			print("\n\n" + str(favorites) + "\n\n")
 		"""
 
-	return render(request, template, locals())
+	return render(request, template, {'detailForm':DetailForm(),
+		'searchForm':SearchForm(), 'favoritesList':favoritesList})

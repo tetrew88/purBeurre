@@ -28,7 +28,6 @@ class TestAuthentification(TestCase):
 		response = self.client.post('/authentification/login/', {'name': 'test', 'password': 'test'})
 
 		self.assertEquals(response.status_code, 302)
-		self.assertTemplateUsed(response, 'pages/index.html')
 
 
 	def test_FailConnexion(self):
@@ -41,6 +40,6 @@ class TestAuthentification(TestCase):
 		self.user.save()
 
 		response = self.client.post('/authentification/login/', {'name': 'test', 'password': '123'})
+		response = self.client.get('/account')
 
-		self.assertEquals(response.status_code, 200)
-		self.assertTemplateUsed(response, 'pages/index.html')
+		self.assertEquals(response.status_code, 401)

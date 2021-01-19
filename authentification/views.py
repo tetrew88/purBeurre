@@ -4,13 +4,17 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
+from django.contrib import messages
+
 from django.shortcuts import redirect
+
+from substitutesearch.management.commands.databaseFunction import searchProfil
 
 from .forms import *
 from .models import *
 
-
 def connexion(request):
+
 	identifiantForm = IdentificationForm()
 
 	template = '/'
@@ -27,28 +31,27 @@ def connexion(request):
 
 			if user is not None:
 				login(request, user)
-				print('connecter')
 			else:
-				print('utilisateur invalide')
+				messages.warning(request, "Erreur lors de l'identification")
 		else:
-			print("Erreur dans la remise du formulaire de conexion")
+			messages.warning(request, "Erreur lors de l'identification")
 
 	else:
 		pass
 	
 
-	return redirect(template, locals())
+	return redirect(template)
 
 
 def register(request):
-	identifiantForm = RegisterForm()
+	registerForm = RegisterForm()
 
 	template = 'pages/register.html'
 
 	if request.method == 'POST':
-		identifiantForm = RegisterForm(request.POST)
+		registerForm = RegisterForm(request.POST)
 
-		if identifiantForm.is_valid():
+		if registerForm.is_valid():
 			username = request.POST.get('name')
 			mail = request.POST.get('mail')
 			password = request.POST.get('password')
@@ -56,20 +59,23 @@ def register(request):
 			try:
 				user = User.objects.create_user(username, mail, password)
 			except:
-				return render(request, template, locals())
-				
+				if searchProfil(username) == False:
+					messages.warning(request, "Mail déja utiliser")
+				else:
+					messages.warning(request, "Pseudo déja utiliser")
+					
+				return render(request, template, {'registerForm':registerForm})
+
 			profil = Profil(name = username, mailAdress = mail, user = user)
 
 			profil.save()
 
-			identifiantForm = IdentificationForm()
+			login(request, user)
 
-			succes = True
-
-			return redirect('/', locals())
+			return redirect('/', {'registerForm':registerForm})
 			
 
-	return render(request, template, locals())
+	return render(request, template, {'registerForm':registerForm})
 
 
 def deconnexion(request):
