@@ -14,11 +14,10 @@
 	*Framework django
   
 **Installation**
-   > _L'installation ce fait en seulement 3 étapes:_
+   > _L'installation ce fait en seulement 2 étapes:_
   
     *Télécharger le code source depuis le dépot
     *Télécharger les dépendances contenu dans le requirement.txt a l'aide de pip
-    *Rendre Executable si nécessaire le fichier "run.py"
 
 **Initialisation de la base de donnée**
    > _Pour lancer l'application rien de compliqué:_
