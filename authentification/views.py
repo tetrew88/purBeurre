@@ -101,9 +101,9 @@ def register(request):
 
 			login(request, user)
 
-			return redirect('/', {'registerForm': registerForm()})
+			return redirect('/', {'registerForm': registerForm(), 'identifiantForm': IdentificationForm()})
 
-	return render(request, template, {'registerForm': registerForm})
+	return render(request, template, {'registerForm': registerForm, 'identifiantForm': IdentificationForm()})
 
 
 def deconnexion(request):
