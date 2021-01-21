@@ -1,29 +1,29 @@
-from substitutesearch.models import *
-from authentification.models import *
+from substitutesearch.models import Product, Category
+from authentification.models import Profil
 
 import json
 import requests
+
 
 def addProductInDatabase(productData, categoriesList):
 	productCategoriesList = []
 
 	try:
-		product = Product(name = productData['product_name'],
-			ingredients = productData['ingredients_text'],
-			label = productData['brands'],
-			saturatedFat = productData['nutrient_levels']['saturated-fat'],
-			fat = productData['nutrient_levels']['fat'],
-			salt = productData['nutrient_levels']['salt'],
-			sugar = productData['nutrient_levels']['sugars'],
-			allergen = productData['ingredients_text_with_allergens'],
-			nutriscore = productData['nutriments']['nutrition-score-fr'],
-			url = productData['url'],
-			pictureUrl = productData['image_small_url']
+		product = Product(name=productData['product_name'],
+			ingredients=productData['ingredients_text'],
+			label=productData['brands'],
+			saturatedFat=productData['nutrient_levels']['saturated-fat'],
+			fat=productData['nutrient_levels']['fat'],
+			salt=productData['nutrient_levels']['salt'],
+			sugar=productData['nutrient_levels']['sugars'],
+			allergen=productData['ingredients_text_with_allergens'],
+			nutriscore=productData['nutriments']['nutrition-score-fr'],
+			url=productData['url'],
+			pictureUrl=productData['image_small_url']
 		)
 	except KeyError:
 		print("produit invalide")
-		return False 
-
+		return False
 
 	for category in categoriesList:
 		url = "https://fr.openfoodfacts.org/cgi/search.pl?search_terms={}&search_simple=1&action=process".format(category.replace(' ', '+'))
@@ -39,7 +39,6 @@ def addProductInDatabase(productData, categoriesList):
 			productCategoriesList.append(productCategory)
 			print("catégorie enregistrer")
 
-
 	tmpProduct = searchProductInDatabase(productData['product_name'])
 	if tmpProduct:
 		print("produit deja existant")
@@ -51,13 +50,12 @@ def addProductInDatabase(productData, categoriesList):
 
 		print("produit ajouter")
 
-
 	return True
 
 
 def searchProductInDatabase(name):
 	product = Product.objects.all()
-	product = product.filter(name__icontains = name)
+	product = product.filter(name__icontains=name)
 
 	if not product.exists():
 		return False
@@ -67,7 +65,7 @@ def searchProductInDatabase(name):
 
 def searchCategoryInDatabase(name):
 	category = Category.objects.all()
-	category = category.filter(name__icontains = name)
+	category = category.filter(name__icontains=name)
 
 	if not category.exists():
 		return False
@@ -91,17 +89,16 @@ def searchSubstitute(product):
 	categoriesList = substituteList = []
 
 	categoriesList = product.category.all()
-			
+
 	for category in categoriesList:
 		productList = Product.objects.all()
-		
+
 		if productList.exists():
 			for element in productList:
 				if category in element.category.all():
 					if element.name != product.name:
 						if element.nutriscore < product.nutriscore:
 							substituteList.append(element)
-
 
 	if len(substituteList) > 0:
 		return substituteList
@@ -111,7 +108,7 @@ def searchSubstitute(product):
 
 def searchProfil(userName):
 	profil = Profil.objects.all()
-	profil = profil.filter(name = userName)
+	profil = profil.filter(name=userName)
 
 	if len(profil) > 0:
 		return profil

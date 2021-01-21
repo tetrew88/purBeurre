@@ -2,14 +2,13 @@ from django.db import models
 
 from django.contrib.auth.models import User
 
-from substitutesearch.models import *
-from favorites.models import *
+from favorites.models import Favorites
 
 
 # Create your models here.
 class Profil(models.Model):
-	name = models.CharField(max_length=100, null = False, unique=True)
-	mailAdress = models.EmailField(max_length=100, null = False, unique=True)
-	user = models.OneToOneField(User, on_delete = models.CASCADE)
+	name = models.CharField(max_length=100, null=False, unique=True)
+	mailAdress = models.EmailField(max_length=100, null=False, unique=True)
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-	favorites = models.ManyToManyField(Favorites, related_name = 'favorites')
+	favorites = models.ManyToManyField(Favorites, related_name='favorites')

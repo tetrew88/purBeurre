@@ -1,13 +1,10 @@
-from django.core.management.base import BaseCommand, CommandError
-from django.conf import settings
-
 import requests
 import json
 
-from substitutesearch.models import *
-from authentification.models import *
+from authentification.models import BaseCommand
 
-from .databaseFunction import *
+from .databaseFunction import addProductInDatabase
+
 
 class Command(BaseCommand):
 
@@ -18,11 +15,8 @@ class Command(BaseCommand):
 
 		url = ""
 
-
-		#main loop
+		"""main loop"""
 		for category in categoriesList:
-			tmpCategory = False
-
 			url = "https://fr.openfoodfacts.org/cgi/search.pl?categories={}&action=process&page_size=100&json=1".format(category)
 
 			try:
@@ -42,16 +36,14 @@ class Command(BaseCommand):
 					except KeyError:
 						print("produit invalide")
 						continue
-					
+
 					for category in productCategoriesList:
 						if category[0:1] == " ":
 							category = category[1:]
 
 					addProductInDatabase(product, productCategoriesList)
 
-
 		print("collect finised")
-
 
 	def handle(self, *args, **options):
 		self.initDB()

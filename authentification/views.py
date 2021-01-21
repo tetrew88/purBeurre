@@ -1,26 +1,27 @@
-from django.template import loader
 from django.shortcuts import render
 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-
+from django.contrib.auth import login, logout
 from django.contrib import messages
+from django.contrib.auth.backends import ModelBackend
+from django.contrib.auth import get_user_model
 
 from django.shortcuts import redirect
 
-from substitutesearch.management.commands.databaseFunction import searchProfil
-
-from .forms import *
-from .models import *
-
-from django.contrib.auth.backends import ModelBackend
-from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.core.exceptions import MultipleObjectsReturned
 
+from substitutesearch.management.commands.databaseFunction import searchProfil
+
+from .forms import IdentificationForm, RegisterForm
+from .models import Profil
+
+
 UserModel = get_user_model()
 
+
 class EmailBackend(ModelBackend):
+
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
             user = UserModel.objects.get(
@@ -67,7 +68,6 @@ def connexion(request):
 
 	else:
 		pass
-	
 
 	return redirect(template)
 
@@ -84,27 +84,26 @@ def register(request):
 			username = request.POST.get('name')
 			mail = request.POST.get('mail')
 			password = request.POST.get('password')
-			
+
 			try:
 				user = User.objects.create_user(username, mail, password)
 			except:
-				if searchProfil(username) == False:
-					messages.warning(request, "Mail déja utiliser")
-				else:
+				if searchProfil(username):
 					messages.warning(request, "Pseudo déja utiliser")
-					
-				return render(request, template, {'registerForm':registerForm})
+				else:
+					messages.warning(request, "Mail déja utiliser")
 
-			profil = Profil(name = username, mailAdress = mail, user = user)
+				return render(request, template, {'registerForm': registerForm})
+
+			profil = Profil(name=username, mailAdress=mail, user=user)
 
 			profil.save()
 
 			login(request, user)
 
-			return redirect('/', {'registerForm':registerForm})
-			
+			return redirect('/', {'registerForm': registerForm()})
 
-	return render(request, template, {'registerForm':registerForm})
+	return render(request, template, {'registerForm': registerForm})
 
 
 def deconnexion(request):

@@ -1,6 +1,6 @@
 from django.test import TransactionTestCase
 
-from substitutesearch.forms import *
+from substitutesearch.forms import SearchForm, DetailForm
 
 
 class TestSubstituteSearchForm(TransactionTestCase):
@@ -12,7 +12,6 @@ class TestSubstituteSearchForm(TransactionTestCase):
 		})
 
 		self.assertTrue(searchForm.is_valid())
-
 
 	def test_DetailFormValidity(self):
 		detailForm = DetailForm(data={

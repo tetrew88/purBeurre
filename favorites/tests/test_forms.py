@@ -1,6 +1,6 @@
 from django.test import TransactionTestCase
 
-from favorites.forms import *
+from favorites.forms import FavoriteForm
 
 
 class TestFavoriteForm(TransactionTestCase):
@@ -8,8 +8,8 @@ class TestFavoriteForm(TransactionTestCase):
 
 	def test_FavoriteFormValidity(self):
 		favoriteForm = FavoriteForm(data={
-		'productName': 'nutella',
-		'substituteName': 'pate a tartiné'
+			'productName': 'nutella',
+			'substituteName': 'pate a tartiné'
 		})
 
 		self.assertTrue(favoriteForm.is_valid())

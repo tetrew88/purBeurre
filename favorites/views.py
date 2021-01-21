@@ -1,72 +1,62 @@
 from django.shortcuts import render
 
-from .forms import *
-from .models import *
+from .models import Favorites
 
-from substitutesearch.views import *
+from substitutesearch.views import search
 
-from authentification.forms import *
-from substitutesearch.forms import *
+from substitutesearch.forms import SearchForm, DetailForm
 
-from substitutesearch.models import *
-from substitutesearch.management.commands.databaseFunction import *
+from substitutesearch.management.commands.databaseFunction import searchProductInDatabase, searchProfil
 
-# Create your views here.
+
 def addToFavorite(request):
+
 	if request.method == 'POST':
-		favoritesForm = FavoriteForm(request.POST)
+		"""collect information from the form"""
 
 		productName = request.POST.get('productName')
 		substituteName = request.POST.get('substituteName')
 		user = request.user
 
-		if substituteName != None and user != None:
+		if substituteName is not None and user is not None:
+			"""collect product/substitute information from database"""
+
 			substitute = searchProductInDatabase(substituteName)
 			product = searchProductInDatabase(productName)
 
+			"""search user profil"""
 			profil = searchProfil(user.username)
 
+			"""create favorite"""
 			favorite = Favorites(substitute=substitute[0], product=product[0])
-
 			favorite.save()
 
+			"""add favorite to user profil"""
 			profil[0].favorites.add(favorite)
 
 		request.POST._mutable = True
 		request.POST['keyword'] = productName
 		request.POST._mutable = False
 
+	"""return to the search"""
 	return search(request)
 
 
 def showFavorites(request):
 	template = 'pages/favorites.html'
-	
-	productCounteur = 0
 
-	favorites = {}
-	productList = favoritesList = []
+	favoritesList = []
 
 	if request.method == 'GET':
+		"""collecte the user profil"""
 		user = request.user
 		profil = searchProfil(user.username)
 
 		profil = profil[0]
 
+		"""collect user favorite in list"""
 		favoritesList = profil.favorites.all()
-		productCounteur = len(productList)
 
-		"""
-			for favorite in favoritesList:
-				if favorite.product.name not in productList:
-					productList.append(favorite.product)
-
-			for product in productList:
-				favorites[product.name] = []
-
-			for favorite in favoritesList:
-				favorites[favorite.product.name].append(favorite.substitute)
-		"""
-
-	return render(request, template, {'detailForm':DetailForm(),
-		'searchForm':SearchForm(), 'favoritesList':favoritesList})
+	return render(request, template, {'detailForm': DetailForm(),
+		'searchForm': SearchForm(),
+		'favoritesList': favoritesList})

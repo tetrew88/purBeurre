@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 
-from authentification.models import *
+from authentification.models import Profil
 
 
 # Create your tests here.
@@ -22,7 +22,7 @@ class TestFavorite(TestCase):
 		self.user.set_password("test")
 		self.user.save()
 
-		profil = Profil(name = 'test', mailAdress = 'test', user = self.user)
+		profil = Profil(name='test', mailAdress='test', user=self.user)
 
 		profil.save()
 

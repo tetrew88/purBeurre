@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .forms import *
+from authentification.forms import IdentificationForm
+from substitutesearch.forms import SearchForm
+
 
 def index(request):
 	identifiantForm = IdentificationForm()
@@ -23,9 +25,10 @@ def account(request):
 	else:
 		return HttpResponse('Unauthorized', status=401)
 
+
 def legalMention(request):
 	identifiantForm = IdentificationForm()
 	searchForm = SearchForm()
-	
+
 	template = 'pages/legalMention.html'
 	return render(request, template, locals())

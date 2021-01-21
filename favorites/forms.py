@@ -2,7 +2,6 @@
 
 from django import forms
 
-from authentification.models import *
 
 class FavoriteForm(forms.Form):
 	productName = forms.CharField(

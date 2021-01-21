@@ -5,18 +5,16 @@ from django import forms
 
 class IdentificationForm(forms.Form):
 	mail = forms.CharField(
-		label = 'Mail',
+		label='Mail',
 		max_length=100,
 		widget=forms.EmailInput(attrs={'class': 'form-control'}),
-        required=True
-    )
+        required=True)
 
 	password = forms.CharField(
 		label='mot de passe',
 		max_length=100,
 		widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        required=True
-    )
+        required=True)
 
 
 class RegisterForm(forms.Form):
@@ -24,20 +22,16 @@ class RegisterForm(forms.Form):
         label='Pseudo',
         max_length=100,
         widget=forms.TextInput(attrs={'class': 'form-control'}),
-        required=True
-        )
-
+        required=True)
 
 	mail = forms.EmailField(
-		label = 'adresse mail',
+		label='adresse mail',
 		max_length=100,
 		widget=forms.EmailInput(attrs={'class': 'form-control'}),
-        required=True
-    )
+        required=True)
 
 	password = forms.CharField(
 		label='mot de passe',
 		max_length=100,
 		widget=forms.PasswordInput(attrs={'class': 'form-control'}),
-        required=True
-    )
+        required=True)

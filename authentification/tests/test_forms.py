@@ -1,6 +1,7 @@
 from django.test import TransactionTestCase
 
-from authentification.forms import *
+from authentification.forms import RegisterForm, IdentificationForm
+
 
 class TestAuthentificationForm(TransactionTestCase):
 	""" classe testing authentification form """
@@ -14,10 +15,9 @@ class TestAuthentificationForm(TransactionTestCase):
 
 		self.assertTrue(registerForm.is_valid())
 
-
 	def test_ConnexionFormValidity(self):
 		connexionForm = IdentificationForm(data={
-		'name': 'test',
+		'mail': 'test@test.fr',
 		'password': '123456'
 		})
 		self.assertTrue(connexionForm.is_valid())

@@ -1,17 +1,10 @@
 from django.shortcuts import render
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
-import requests
-import json
+from .management.commands.databaseFunction import searchProductInDatabase, searchProductOnOFF, addProductInDatabase, searchSubstitute
 
-from pages.forms import *
-from .models import *
-
-from .management.commands.databaseFunction import *
-
-from favorites.forms import *
-from authentification.forms import *
-from .forms import *
+from favorites.forms import FavoriteForm
+from authentification.forms import IdentificationForm
+from .forms import SearchForm, DetailForm
 
 
 def search(request):
@@ -19,8 +12,6 @@ def search(request):
 	product = False
 
 	productCategoriesList = substituteList = []
-
-	tmpCategory = ""
 
 	template = 'pages/resultSearch.html'
 
@@ -30,14 +21,14 @@ def search(request):
 		if searchForm.is_valid():
 			keyword = request.POST.get('keyword')
 
-			#cherche le produit dans la base de donnée
+			"""cherche le produit dans la base de donnée"""
 			product = searchProductInDatabase(keyword)
 
-			#si le produit n'as pas ete trouver le cherche sur off
-			if product == False:
+			"""si le produit n'as pas ete trouver le cherche sur off"""
+			if product is False:
 				result = searchProductOnOFF(keyword)
 
-				if result: 
+				if result:
 					categoriesList = result['categories'].split(',')
 					for category in categoriesList:
 						if category[0] == " ":
@@ -50,18 +41,18 @@ def search(request):
 					else:
 						pass
 
-		#si un produit est valide
+		"""si un produit est valide"""
 		if product:
 			print("produit trouver")
 
 			product = product[0]
 
-			#cherche les substituts du produits
+			"""cherche les substituts du produits"""
 			substituteList = searchSubstitute(product)
 
-	return render(request, template, {'detailForm':DetailForm(),
-		'searchForm':SearchForm(), 'identifiantForm':IdentificationForm(), 'favoriteForm':FavoriteForm(),
-		'product':product, 'substituteList':substituteList })
+	return render(request, template, {'detailForm': DetailForm(),
+		'searchForm': SearchForm(), 'identifiantForm': IdentificationForm(), 'favoriteForm': FavoriteForm(),
+		'product': product, 'substituteList': substituteList})
 
 
 def detail(request):
@@ -76,11 +67,11 @@ def detail(request):
 		if detailForm.is_valid():
 			keyword = request.POST.get('keyword')
 
-			#cherche le produit dans la base de donnée
+			"""cherche le produit dans la base de donnée"""
 			product = searchProductInDatabase(keyword)
 
 			product = product[0]
 
-	return render(request, template, {'detailForm':DetailForm(),
-		'searchForm':SearchForm(), 'identifiantForm':IdentificationForm(),
-		'product':product})
+	return render(request, template, {'detailForm': DetailForm(),
+		'searchForm': SearchForm(), 'identifiantForm': IdentificationForm(),
+		'product': product})
