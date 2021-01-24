@@ -13,6 +13,7 @@ from django.db.models import Q
 from django.core.exceptions import MultipleObjectsReturned
 
 from substitutesearch.management.commands.databaseFunction import searchProfil
+from substitutesearch.forms import SearchForm
 
 from .forms import IdentificationForm, RegisterForm
 from .models import Profil
@@ -95,19 +96,19 @@ def register(request):
 
 				login(request, user)
 
+				return redirect('/', {'identifiantForm': IdentificationForm(), 'searchForm': SearchForm()})
+
 			except IntegrityError:
+				registerForm = RegisterForm()
+				
 				if searchProfil(username):
 					messages.warning(request, "Pseudo déja utiliser")
 				else:
 					messages.warning(request, "Mail déja utiliser")
 
-				registerForm = RegisterForm()
+				return render(request, template, {'registerForm': registerForm, 'identifiantForm': IdentificationForm(), 'searchForm': SearchForm()})
 
-				return render(request, template, {'registerForm': registerForm})
-
-			return redirect('/', {'identifiantForm': IdentificationForm()})
-
-	return render(request, template, {'registerForm': registerForm, 'identifiantForm': IdentificationForm()})
+	return render(request, template, {'registerForm': registerForm, 'identifiantForm': IdentificationForm(), 'searchForm': SearchForm()})
 
 
 def deconnexion(request):
