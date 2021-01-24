@@ -1,7 +1,7 @@
 import requests
 import json
 
-from authentification.models import BaseCommand
+from django.core.management.base import BaseCommand
 
 from .databaseFunction import addProductInDatabase
 

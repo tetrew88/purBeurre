@@ -6,8 +6,7 @@
  **Pré-requis**
   >_liste:_
 
-	*Une simple connection internet
- 	*Bibliothèque flask
+	  *Une simple connection internet
   	*Bibliothèque boostrap
   	*Bibliothèque json
   	*Bibliothèque requests
