@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 
 from django.shortcuts import redirect
 
+from django.db.utils import IntegrityError
 from django.db.models import Q
 from django.core.exceptions import MultipleObjectsReturned
 
@@ -87,21 +88,24 @@ def register(request):
 
 			try:
 				user = User.objects.create_user(username, mail, password)
-			except:
+
+				profil = Profil(name=username, mailAdress=mail, user=user)
+
+				profil.save()
+
+				login(request, user)
+
+			except IntegrityError:
 				if searchProfil(username):
 					messages.warning(request, "Pseudo déja utiliser")
 				else:
 					messages.warning(request, "Mail déja utiliser")
 
+				registerForm = RegisterForm()
+
 				return render(request, template, {'registerForm': registerForm})
 
-			profil = Profil(name=username, mailAdress=mail, user=user)
-
-			profil.save()
-
-			login(request, user)
-
-			return redirect('/', {'registerForm': registerForm(), 'identifiantForm': IdentificationForm()})
+			return redirect('/', {'identifiantForm': IdentificationForm()})
 
 	return render(request, template, {'registerForm': registerForm, 'identifiantForm': IdentificationForm()})
 
