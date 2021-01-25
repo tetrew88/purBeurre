@@ -6,6 +6,8 @@ from substitutesearch.forms import SearchForm
 
 
 def index(request):
+	""" index pages """
+
 	identifiantForm = IdentificationForm()
 	searchForm = SearchForm()
 
@@ -15,6 +17,7 @@ def index(request):
 
 
 def account(request):
+	""" account pages """
 	identifiantForm = IdentificationForm()
 	searchForm = SearchForm()
 
@@ -27,6 +30,7 @@ def account(request):
 
 
 def legalMention(request):
+	""" legal mentions pages """
 	identifiantForm = IdentificationForm()
 	searchForm = SearchForm()
 

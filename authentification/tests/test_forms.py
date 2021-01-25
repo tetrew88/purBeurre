@@ -6,7 +6,7 @@ from authentification.forms import RegisterForm, IdentificationForm
 class TestAuthentificationForm(TransactionTestCase):
 	""" classe testing authentification form """
 
-	def test_RegisterFormValidity(self):
+	def test_register_form_validity(self):
 		registerForm = RegisterForm(data={
 		'name': 'test',
 		'mail': 'test@test.fr',
@@ -15,7 +15,7 @@ class TestAuthentificationForm(TransactionTestCase):
 
 		self.assertTrue(registerForm.is_valid())
 
-	def test_ConnexionFormValidity(self):
+	def test_connexion_form_validity(self):
 		connexionForm = IdentificationForm(data={
 		'mail': 'test@test.fr',
 		'password': '123456'

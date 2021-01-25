@@ -12,26 +12,45 @@ class TestFavorite(TestCase):
 
 	client = Client()
 
-	def test_AddFavorite(self):
+	def test_add_Favorite(self):
 		""" test adding a favorite of an user """
-		self.user = User.objects.create(username='test',
-			first_name='test',
+		self.user = User.objects.create(username='testouille',
+			first_name='testouille',
 			last_name='test',
-			email='test@test.fr')
+			email='testouille@testouille.fr')
 
 		self.user.set_password("test")
 		self.user.save()
 
-		profil = Profil(name='test', mailAdress='test', user=self.user)
+		profil = Profil(name=self.user.username, mailAdress=self.user.email, user=self.user)
 
 		profil.save()
 
-		self.client.login(username='test', password='test')
+		self.client.login(username='testouille', password='test')
 
 		response = self.client.post('/favorites/addToFavorites/', {'substituteName': 'Curly', 'productName': 'nutella'})
 
 		self.assertEquals(response.status_code, 200)
 		self.assertTemplateUsed(response, 'pages/resultSearch.html')
 
-	def test_ShowFavorite(self):
-		pass
+	def test_show_favorite(self):
+		"""test showing favorites"""
+
+		self.user = User.objects.create(username='testouille',
+			first_name='testouille',
+			last_name='test',
+			email='testouille@testouille.fr')
+
+		self.user.set_password("test")
+		self.user.save()
+
+		profil = Profil(name=self.user.username, mailAdress=self.user.email, user=self.user)
+
+		profil.save()
+
+		self.client.login(username='testouille', password='test')
+
+		response = self.client.post('/favorites/showFavorites/', {})
+
+		self.assertEquals(response.status_code, 200)
+		self.assertTemplateUsed(response, 'pages/favorites.html')
