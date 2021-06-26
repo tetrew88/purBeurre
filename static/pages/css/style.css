@@ -1,0 +1,50 @@
+.navbar input
+{
+	border: 3px inset grey;
+	border-radius:10px;
+
+	background: grey;
+}
+
+.introduction
+{
+	background-image: url(../img/fond.jpg);
+	background-attachment: fixed; /* Le fond restera fixe */
+    background-repeat: no-repeat; /* Le fond ne sera pas répété */
+    background-position: top right; /* Le fond sera placé en haut à droite */
+
+    width: 100%;
+    height: 100%;
+}
+
+.introduction input
+{
+	margin-bottom: 3%;
+}
+
+.modal-dialog
+{
+	border: 3px inset blue;
+	border-radius:10px;
+}
+
+.inscriptionBanner
+{
+	background-color: blue;
+
+	margin-bottom: 2%;
+}
+
+.buttonZone
+{
+	margin-bottom: 2%;
+}
+
+.mailZone
+{
+	width: 20%;
+	border: 3px inset grey;
+	border-radius:10px;
+
+	background: grey;
+}

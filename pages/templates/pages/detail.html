@@ -1,0 +1,88 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+{% load static %}
+
+	<div class='blocPage'>
+		<section>
+			<div class="row introduction">
+				<div class="col">
+
+					<div class="row">
+						<div class="col-5"></div>
+						<div class="col-2 titleBox text-center">
+							<h2><strong>DETAIL</strong></h2>
+						</div>
+						<div class="col-5"></div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<div class="row separation1"></div>
+
+		<section>
+			<div class="row productPresentation">
+				<div class="col-1"></div>
+
+				<div class="col-10 productPlug">
+
+					<div class="row">
+						<div class="col-4"></div>
+
+						<div class="col-4 text-center">
+							<img class="img-fluid rounded" src={{ product.pictureUrl }} alt="product_picture">
+						</div>
+
+						<div class="col-4"></div>
+					</div>
+
+
+					<div class="row informationFrame">
+						<div class="col-5">
+							<p class="text-center">Nutriscore</p>
+							<h1 class="text-center">{{ product.nutriscore }}</h1>
+						</div>
+
+						<div class="col-2"></div>
+
+						<div class="col-5">
+							<p class="text-center">Valeur Nutritionel:</p>
+
+							<ul>
+								<li>Graisse saturer: {{ product.saturatedFat }}</li>
+								<li>Graisse: {{ product.fat }}</li>
+								<li>Sel: {{ product.salt }}</li>
+								<li>Sucre: {{ product.sugar }}</li>
+							</ul>
+						</div>
+					</div>
+
+
+					<div class="row detailFrame">
+						<div class="col-3"></div>
+
+						<div class="col-6">
+							<p class="text-center">Details</p>
+							<ul>
+								<li>Ingrédients: {{ product.ingredients }}</li>
+								<br>
+								<li>Allergène: {{ product.allergen }}</li>
+							</ul>
+						</div>
+
+						<div class="col-3"></div>
+					</div>
+
+				</div>
+
+				<div class="col-1"></div>
+			</div>
+		</section>
+
+		<div class="row separation2"></div>
+
+	</div>
+
+{% endblock %}

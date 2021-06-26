@@ -1,0 +1,298 @@
+/*Title*/
+h1
+{
+	font-family: "Open Sans", sans-serif;
+}
+
+
+h2
+{
+	margin-bottom: 2%;
+	margin-top: 2%;
+
+	font-family: "Open Sans", sans-serif;
+}
+
+/**/
+
+p, li
+{
+	font-family: "Scope One", sans-serif;
+}
+
+
+/*Generic personal class*/
+.titleBox
+{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.blocPage
+{
+	background-color: #345A61;
+	width: 100%;
+}
+
+.logo
+{
+	width: 30px;
+	height: 30px;
+
+	margin: auto;
+}
+
+.separation1
+{
+	width: 100%;
+	height: 15px;
+
+	margin: auto;
+
+	background: #86EBE6;
+}
+
+.separation2
+{
+	width: 100%;
+	height: 15px;
+
+	margin: auto;
+
+	background: #C45525;
+}
+
+.separation3
+{
+	width: 100%;
+	height: 15px;
+
+	margin: auto;
+
+	background: #E8A75D;
+}
+
+.frame
+{
+	border: 3px inset blue;
+	border-radius:10px;
+
+	background: #86EBE6;
+
+	margin: 1%;
+	padding: 2%;
+
+	opacity: 1.5;
+
+	margin-right: 2%;
+	margin-left: 2%; 
+
+}
+
+/**/
+
+
+/*Navbar*/
+#mainNavbar
+{
+	background-color: #345A61;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	justify-content: flex-start;
+	align-items: flex-start;
+
+	width: auto;
+	margin: auto;
+}
+
+.navLink
+{
+	margin-right: 3%;
+	margin-left: 5%;
+}
+
+#navbarContent li
+{
+	margin: auto;
+	margin-right: 8%;
+}
+
+.navbarSearch
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+
+	justify-content: flex-end;
+	align-items: flex-start;
+
+	margin: auto;
+
+	width: 100%;
+}
+/**/
+
+
+/*base*/
+.contactSection
+{
+	background-color: #DE9440;
+}
+
+.contactInformation
+{
+	margin: auto;
+}
+
+.modal-dialog
+{
+	border: 3px inset blue;
+	border-radius:10px;
+}
+
+.buttonZone
+{
+	padding-top: 1%;
+	margin-bottom: 2%;
+}
+/**/
+
+
+/*index*/
+.introduction
+{
+	width: 100%;
+
+	background-image: url(../img/fond.jpg);
+    background-position: center;
+}
+
+.introduction input
+{
+	margin-bottom: 3%;
+}
+
+.pictureFrame
+{
+	border: 6px inset #C45525;
+	border-radius:10px;
+}
+
+.presentation
+{
+	background: #E8A75D;
+}
+/**/
+
+
+/*register*/
+.authentificationBanner
+{
+	background-color: #86EBE6;
+
+	margin-bottom: 2%;
+}
+
+.register
+{
+	background-color: #DE9440;
+}
+/**/
+
+
+/*result/favorites*/
+.resultBox
+{
+	border: 3px inset blue;
+	border-radius:10px;
+
+	background: #86EBE6;
+
+	margin: 1%;
+	padding: 2%;
+
+	opacity: 1.5;
+
+	margin-right: 2%;
+	margin-left: 2%;
+
+	width: 70%
+
+}
+
+.productBox
+{
+	border: 3px inset grey;
+	border-radius: 6px;
+}
+/**/
+
+/*result*/
+.resultBanner
+{
+	margin: auto;
+}
+
+.productTitle
+{
+	background: #E8A75D;
+}
+/**/
+
+
+/*account*/
+.usernameLabel
+{
+	margin: auto;
+}
+
+.mailZone
+{
+	width: 20%;
+	border: 3px inset grey;
+	border-radius:10px;
+
+	background: grey;
+
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+/**/
+
+
+/*detail*/
+.productPresentation
+{
+	background-color: #E8A75D;
+}
+
+.productPlug
+{
+	border: 3px inset;
+	border-radius:10px;
+
+	background-color: #86EBE6;
+
+	padding-top: 3%;
+	padding-bottom: 3%;
+
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+
+.informationFrame
+{
+	margin-top: 5%;
+	margin-bottom: 5%; 
+}
+
+.detailFrame
+{
+	margin-top: 5%; 
+	margin-bottom: 5%; 
+}
+/**/

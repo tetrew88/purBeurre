@@ -1,0 +1,38 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+{% load static %}
+	<div class='blocPage'>
+
+		<div class="introduction">
+			<div class="row ">
+				<div class="col">
+
+					<div class="row">
+						<div class="col-5"></div>
+						<div class="col-2 titleBox">
+							<h2 class="text-center"><strong>Mon compte</strong></h2>
+						</div>
+						<div class="col-5"></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="row separation1"></div>
+
+		<div class="row">
+			<div class="col-4"></div>
+			<div class="col-4">
+				<p class="text-center mailZone" style="width: 100%">
+					{{ user.email }}
+				</p>		
+			</div>
+			<div class="col-4"></div>
+		</div>
+
+		<div class="row separation2"></div>
+	</div>
+
+{% endblock %}

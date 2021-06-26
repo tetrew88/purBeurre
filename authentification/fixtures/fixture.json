@@ -1,0 +1,38 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$216000$DuKG47zVTwwS$QYO2Ye8wil/uLTNBR4jWaFRi2fxxC41q5LUXPQhT/Mc=",
+        "last_login": "2021-01-24T14:04:02.472Z",
+        "is_superuser": false,
+        "username": "tetrew",
+        "first_name": "",
+        "last_name": "",
+        "email": "donovanmaurice@laposte.net",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-01-24T14:04:02.145Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$216000$yZOGYofg6kvq$KvwlYkEdpgOKRHamEqsYkGf+x9t9XlofTRfhUyklQDE=",
+        "last_login": "2021-01-24T16:41:21.251Z",
+        "is_superuser": false,
+        "username": "test",
+        "first_name": "",
+        "last_name": "",
+        "email": "test@test.fr",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-01-24T14:33:14.591Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]

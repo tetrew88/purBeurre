@@ -1,0 +1,62 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+{% load static %}
+
+	<div class='blocPage'>
+		<div class="row separation1"></div>
+
+		<div class="container-fluid register">
+			<div class="row center-text">
+				<div class='col-3'></div>
+				<div class='col-6 formZone frame'>
+
+					<div class="row" style="margin-bottom: 2%;">
+						<div class="col text-center">
+							<h2><strong>Inscription</strong></h2>
+						</div>
+					</div>
+				
+					<form id="identifiantInput" method="post">
+
+						{% csrf_token %}
+
+						<div class="row">
+							<div class="col text-center">
+						   		<label for="{{ registerForm.name.id_for_label }}">pseudo:</label>
+						   		{{ registerForm.name }}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col text-center">
+						   		<label for="{{ registerForm.mail.id_for_label }}">adresse mail:</label>
+						   		{{ registerForm.mail }}
+							</div>
+						</div>
+
+						<div class="row">
+						   	<div class="col text-center">
+								<label for="{{ registerForm.password.id_for_label }}">mot de passe:</label>
+						   		{{ registerForm.password }}
+							</div>
+						</div>
+
+
+						<div class="row buttonZone">
+							<div class="col text-center">
+								<button id="inscriptionButton" type="submit" class="btn btn-success" formaction="{% url 'authentification:register' %}">S'inscrire</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class='col-3'></div>
+			</div>
+		</div>
+
+		<div class="row separation2"></div>
+
+	</div>
+
+{% endblock %}

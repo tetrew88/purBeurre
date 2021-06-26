@@ -1,0 +1,88 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+{% load static %}
+
+	<div class='blocPage'>
+
+		<section>
+			<div class="row resultBanner">
+				<div class="col d-flex" style="background-image: url({{ product.pictureUrl }})">
+					<div class="col titleBox text-center">
+						<h2><strong>Résultat</strong></h2>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="row separation1"></div>
+
+		<section>
+			<div class="row">
+				<div class="col resultBox">
+					{% if substituteList %}
+						<div class="row">
+							{% for subst in substituteList %}
+								<div class="col-lg-4">
+									
+									<div class="card productBox" style=margin-bottom:5%>
+										<form method="POST" action="{% url 'search:detail' %}">
+											{% csrf_token %}
+
+											<input type="hidden" name="keyword" value="{{ subst.name }}">
+
+											<button name='detail' type="submit" style="width: 100%">
+
+												<img class="img-fluid rounded" src={{ subst.pictureUrl }} alt="product_picture">
+
+											</button>
+										</form>
+										
+										<div class="card-title text-center productTitle" style=margin-bottom:0%>
+											{{ subst.name }}
+				   						</div>
+
+				   						{% if user.is_authenticated %}
+					   						<div class="row">
+												<div class="col">
+													<form method="POST" action="{% url 'favorites:addToFavorites' %}">
+														{% csrf_token %}
+
+														<input type="hidden" name="productName" value="{{ product.name }}">
+														<input type="hidden" name="substituteName" value="{{ subst.name }}">
+														
+														<button type="submit" class="btn btn-primary" style="width: 100%">
+										   						Enregistrer
+										   				</button>
+														
+													</form>
+												</div>
+					   						</div>
+					   					{% endif %}
+
+									</div>
+
+								</div>
+							{% endfor %}
+						</div>
+					{% else %}
+						<div class="row">
+							<div class="col-4"></div>
+							<div class="col-4 text-center">
+								<p>Aucun résultat</p>
+							</div>
+							<div class="col-4"></div>
+						</div>
+					{% endif %}
+
+				</div>
+			</div>
+
+
+		</section>
+
+		<div class="row separation2"></div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+{% load static %}
+
+	<div class='blocPage'>
+		<section>
+			<div class="row introduction">
+					<div class="col">
+						<div class="row">
+							<div class="col-5"></div>
+							<div class="col-2 titleBox">
+								<h2><strong>Favoris</strong></h2>
+							</div>
+							<div class="col-5"></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="row separation1"></div>
+
+		<div class="row">
+			<div class="col resultBox">
+				<div class="row">
+					{% for favorite in favoritesList %}
+
+						<div class="col-lg-4">							
+							<div class="card productBox" style=margin-bottom:5%>
+								<form method="POST" action="{% url 'search:detail' %}">
+											{% csrf_token %}
+
+											<input type="hidden" name="keyword" value="{{ favorite.substitute.name }}">
+
+											<button type="submit" style="width: 100%">
+
+												<img class="img-fluid rounded" src={{ favorite.substitute.pictureUrl }} alt="product_picture">
+
+											</button>
+										</form>
+													
+								<div class="card-title text-center productTitle" style=margin-bottom:0%>
+									{{ favorite.substitute.name }}
+					   			</div>
+					   		</div>
+						</div>
+
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="row separation2"></div>
+	</div>
+
+{% endblock %}
